@@ -19,9 +19,9 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tapGesture)
         emailTextField.delegate = self
         
-       
+        
     }
-
+    
     @objc func didTap(gesture:UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -30,6 +30,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     @IBAction func changePasswordButton(_ sender: Any) {
+        emailTextField.resignFirstResponder()
         if (emailTextField.text?.isEmpty)! {
             self.view.makeToast(ServerRequestConstants.resultErrors.emptyText, duration: 3.0, position:.bottom, title: "Error") { didTap in
                 if didTap {
@@ -51,15 +52,19 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             }
             return
         }
+        var params = Dictionary<String, String>();
+        params["request"] = "0"
+        params["mail"] = emailTextField.text
+        ServerRequestManager.instance.forgotPostRequest(params: params as Dictionary<NSString, NSString>, url: ServerRequestConstants.URLS.FORGOT_PASSWORD_URL, postCompleted: { (response, msg, json) -> () in
+            
+           print(response)
+            print(msg)
+            self.createAlert(msg: msg)
+            
+            
+        })
         
-        //TO-DO: email confirmation
-        let alertController = UIAlertController(title: "Validate the E-Mail confirmation code", message: nil, preferredStyle: .alert)
-        alertController.addTextField(configurationHandler: emailConfirmationTextField)
-        let okAction = UIAlertAction(title: "Done", style: .default, handler: self.okHandler)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true)
+        
     }
     
     func emailConfirmationTextField(textField: UITextField!) {
@@ -71,5 +76,14 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         
         
     }
-
+    
+    func createAlert(msg: String?){
+        let alertController = UIAlertController(title: msg, message: nil, preferredStyle: .alert)
+//        alertController.addTextField(configurationHandler: emailConfirmationTextField)
+        let okAction = UIAlertAction(title: "Done", style: .default, handler: self.okHandler)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(okAction)
+//        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true)
+    }
 }

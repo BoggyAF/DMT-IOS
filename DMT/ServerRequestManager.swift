@@ -16,6 +16,7 @@ enum ServerRequestConstants {
         static let LOGIN_BINARY_RESPONSE = "http://students.doubleuchat.com/list_bin.php";
         static let LOGIN_URL = "http://students.doubleuchat.com/login.php";
         static let REGISTER_URL = "http://students.doubleuchat.com/register.php";
+        static let FORGOT_PASSWORD_URL = "http://students.doubleuchat.com/forgotpw.php";
     }
     
     
@@ -26,7 +27,7 @@ enum ServerRequestConstants {
         static let unknownError = "O eroare necunoscuta a avut loc."
         static let confirmEmail = "Inregistrare reusita! Va rugam sa confirmati activarea acestui cont prin verificarea adresei de email tastate."
     }
-   
+    
     
     struct JSON {
         static let REGISTER_REQUEST_NUMBER = "1"
@@ -43,12 +44,12 @@ enum ServerRequestConstants {
 
 class ServerRequestManager: NSObject {
     
-   
+    
     static let instance = ServerRequestManager()
     
     
     func postRequest(params : Dictionary<NSString, NSString>,  url : String, postCompleted: @escaping (_ response: String, _ msg: String, _ json: NSDictionary?) -> ()) {
-       
+        
         let paramsStr = createStringFromDictionary(dict: params)
         let paramsLength = "\(paramsStr.count)"
         let requestBodyData = (paramsStr as NSString).data(using: String.Encoding.utf8.rawValue)
@@ -65,7 +66,7 @@ class ServerRequestManager: NSObject {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response , error -> Void in
-
+            
             do{
                 
                 let decoder = JSONDecoder()
@@ -79,8 +80,8 @@ class ServerRequestManager: NSObject {
                     print("USER Register email - \(email)")
                     print("USER Register name - \(nume)")
                 }
-
-
+                
+                
                 
             }
             catch let error {
@@ -110,43 +111,38 @@ class ServerRequestManager: NSObject {
             }
             
             
-
-            
-
-
-            
             if(json == nil) {
                 if let jsonStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
                     print("Error could not parse JSON: '\(jsonStr)'")
                     postCompleted(ServerRequestConstants.JSON.RESPONSE_ERROR, "An error has occured. Please try again later.", nil)
                 }
-
+                
             }
             else {
                 if let parseJSON = json {
-//                    let response: String = parseJSON[ServerRequestConstants.JSON.TAG_RESPONSE] as? String ?? ""
-//                    let message: String = parseJSON[ServerRequestConstants.JSON.TAG_MESSAGE] as? String ?? ""
+                    //                    let response: String = parseJSON[ServerRequestConstants.JSON.TAG_RESPONSE] as? String ?? ""
+                    //                    let message: String = parseJSON[ServerRequestConstants.JSON.TAG_MESSAGE] as? String ?? ""
                     if (params["request"]?.isEqual(ServerRequestConstants.JSON.LOGIN_REQUEST_NUMBER))!{
                         let stringResponse = "In the works"
                         // TO-DO: prelucrarea proprietatii "json"
-                   guard let msgValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_MESSAGE) as! String? else{
-                    return
+                        guard let msgValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_MESSAGE) as! String? else{
+                            return
                         }
                         if msgValue.isEqual(ServerRequestConstants.JSON.RESPONSE_SUCCESS)
                         {//daca parametrii au fost corecti
-                    guard let responseValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_RESPONSE) as! NSDictionary? else{
-                        return
-                    }
-                    print ("msg value este: '\(msgValue)'")
-//                    print ("response value este: '\(responseValue)'")
-//                            stringResponse = self.createStringFromDictionary(dict: responseValue as! Dictionary<NSString, NSString>)
+                            guard let responseValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_RESPONSE) as! NSDictionary? else{
+                                return
+                            }
+                            print ("msg value este: '\(msgValue)'")
+                            //                    print ("response value este: '\(responseValue)'")
+                            //                            stringResponse = self.createStringFromDictionary(dict: responseValue as! Dictionary<NSString, NSString>)
                             
                         }
-//                        else {
-//                            stringResponse = json?.value(forKey:ServerRequestConstants.JSON.TAG_RESPONSE) as? String
-//                        }
+                        //                        else {
+                        //                            stringResponse = json?.value(forKey:ServerRequestConstants.JSON.TAG_RESPONSE) as? String
+                        //                        }
                         print("response in string este:'\(String(describing: stringResponse))'")
-                            postCompleted(stringResponse, msgValue, parseJSON)
+                        postCompleted(stringResponse, msgValue, parseJSON)
                     }
                     if (params["request"]?.isEqual(ServerRequestConstants.JSON.REGISTER_REQUEST_NUMBER))!{
                         //TO-DO: prelucrarea proprietatii "json"
@@ -156,8 +152,8 @@ class ServerRequestManager: NSObject {
                         guard let responseValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_RESPONSE) as! String? else{
                             return
                         }
-                       print ("msg value este: '\(msgValue)'")
-//                         print ("response value este: '\(responseValue)'")
+                        print ("msg value este: '\(msgValue)'")
+                        //                         print ("response value este: '\(responseValue)'")
                         postCompleted(responseValue, msgValue, parseJSON)
                     }
                     
@@ -172,7 +168,55 @@ class ServerRequestManager: NSObject {
         task.resume()
     }
     
-
+    func forgotPostRequest(params : Dictionary<NSString, NSString>,  url : String, postCompleted: @escaping (_ response: String, _ msg: String, _ json: NSDictionary?) -> ()) {
+        
+        let paramsStr = createStringFromDictionary(dict: params)
+        let paramsLength = "\(paramsStr.count)"
+        let requestBodyData = (paramsStr as NSString).data(using: String.Encoding.utf8.rawValue)
+        let request = NSMutableURLRequest(url: NSURL(string: url)! as URL)
+        let session = URLSession.shared
+        
+        request.httpMethod = "POST"
+        request.allowsCellularAccess = true
+        request.httpBody = requestBodyData;
+        
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.addValue(paramsLength, forHTTPHeaderField: "Content-Length")
+        
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response , error -> Void in
+            
+            let json: NSDictionary?
+            do {
+                if(data != nil) {
+                    print("data != nil")
+                    json = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? NSDictionary
+                    
+                } else {
+                    print("data == nil")
+                    postCompleted(ServerRequestConstants.JSON.RESPONSE_ERROR, "An error has occured. Please try again later.", nil)
+                    json = nil
+                    return
+                }
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+                json = nil
+            }
+            
+            guard let msgValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_MESSAGE) as! String? else{
+                return
+            }
+            print(msgValue)
+            guard let responseValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_RESPONSE) as! String? else{
+                return
+            }
+            print(responseValue)
+            postCompleted(msgValue,responseValue,json)
+            
+        })
+        task.resume()}
     
     private func createStringFromDictionary(dict: Dictionary<NSString, NSString>) -> String {
         var params = String();
@@ -191,7 +235,9 @@ class ServerRequestManager: NSObject {
         
     }
     
- }
+    
+    
+}
 
 
 extension ServerRequestManager:NSURLConnectionDelegate {
