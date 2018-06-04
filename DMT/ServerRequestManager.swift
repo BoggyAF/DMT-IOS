@@ -69,8 +69,14 @@ class ServerRequestManager: NSObject {
             
             do{
                 
+                let backToString = String(data: data!, encoding: String.Encoding.utf8) as String?
+
+                print("server response = \(String(describing: backToString))")
+                
                 let decoder = JSONDecoder()
+                // FIXME:  Problema aici cu data! Ce se intampla daca data este nil?
                 let objectJSON = try decoder.decode(UserRegister.self, from: data!)
+                
                 // AM PUS OPTIONAL CAMPURILE IN USERREGISTER PENTRU CA ESTE POSIBIL CA SERVERUL SA NU NE FURNIZEZE TOATE INFORMATIILE
                 // PRIN URMARE, VERIFIC DACA MI-AU VENIT CAMPURILE SI APOI LE AFISEZ, STIIND CU SIGURANTA CA AM ACELE INFORMATII
                 if let message = objectJSON.msg,
