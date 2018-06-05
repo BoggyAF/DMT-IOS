@@ -35,6 +35,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         let showKeyboard: (Notification) -> Void = { notification in
             self.KeyboardWillShow(notification)
         }
@@ -183,6 +184,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             }
         }
+       segue.destination.navigationController?.setNavigationBarHidden(false, animated: false)
+        
     }
     func getImageFromBase64(base64:String) -> UIImage {
         let data = Data(base64Encoded: base64)
