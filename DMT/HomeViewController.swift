@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource
 
 {
+    // new menber
     var userDetails: NSDictionary? // aceasta instanta este creata atunci cand se va face tranzitia din LoginVC in HomeVC
     
     let reuseIdentifier = "cell"
