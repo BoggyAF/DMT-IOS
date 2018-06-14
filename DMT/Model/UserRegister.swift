@@ -11,7 +11,8 @@
 /**
    JSON = {
     msg = success;
-    response =     {
+    response = "Nu a fost specificat ID-ul de utilizator."
+    results =     {
         avatar = "..";
         email = "stefan@buzoianu.ro";
         "id_user" = 11;
@@ -52,6 +53,7 @@ struct UserDetails: Codable {
 }
 
 struct UserRegister: Codable{
-    let msg: String?
-    let response: UserDetails?
+    let msg: String? // "ERROR" sau "SUCCESS"
+    let response: String? // "Nu a fost specificat ID-ul de utilizator."
+    let results:UserDetails?
 }

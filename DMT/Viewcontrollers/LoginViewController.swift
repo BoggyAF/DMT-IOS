@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var rememberSwitch: UISwitch!
     @IBOutlet weak var passwordField: UITextField!
     
-    var userDetailsFromServer: NSDictionary? = nil
+    var userDetailsFromServer: UserRegister? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,38 +139,38 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     params["parola"] = parola
     params["request"] = ServerRequestConstants.JSON.LOGIN_REQUEST_NUMBER
         
-                ServerRequestManager.instance.postRequest(params: params as Dictionary<NSString, NSString>, url: ServerRequestConstants.URLS.LOGIN_URL, postCompleted: { (response, msg, json) -> () in
-                    if  response != ""  {
-                                        if(msg == ServerRequestConstants.JSON.RESPONSE_ERROR) {
-                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-                                                DispatchQueue.main.async {
-                                                    self.loginButton.isEnabled = true
-                                                    self.view.makeToast(response, duration: 3.0, position:.bottom, title: "Error") { didTap in
-                                                        if didTap {
-                                                            print("completion from tap")
-                                                        } else {
-                                                            print("completion without tap")
-                                                        }
-                                                    }
-                                                   
-                                                }
-                                            }
-                                        } else if(msg == ServerRequestConstants.JSON.RESPONSE_SUCCESS) {
-                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-                                                DispatchQueue.main.async {
-                                                    
-                                                    // inainte de a face segue vom transfera obiectul json catre HomeVC
-                                                    self.userDetailsFromServer = json
-                                                    self.performSegue(withIdentifier: "toApp", sender: Any?.self)
-                                                        
-                                                    }
-                                            }
-                                        }
-                                    } else {
-                                        self.loginButton.isEnabled = true
-                                        AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.unknownError, viewController: self)
-                        
-                                    }
+                ServerRequestManager.instance.postRequest(params: params as Parameters, url: ServerRequestConstants.URLS.LOGIN_URL, postCompleted: { json in
+//                    if  json?.msg != ""  {
+//                        if(json?.msg == ServerRequestConstants.JSON.RESPONSE_ERROR) {
+//                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+//                                                DispatchQueue.main.async {
+//                                                    self.loginButton.isEnabled = true
+//                                                    self.view.makeToast(json?.msg, duration: 3.0, position:.bottom, title: "Error") { didTap in
+//                                                        if didTap {
+//                                                            print("completion from tap")
+//                                                        } else {
+//                                                            print("completion without tap")
+//                                                        }
+//                                                    }
+//
+//                                                }
+//                                            }
+//                                        } else if(json?.msg == ServerRequestConstants.JSON.RESPONSE_SUCCESS) {
+//                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+//                                                DispatchQueue.main.async {
+//
+//                                                    // inainte de a face segue vom transfera obiectul json catre HomeVC
+//                                                    self.userDetailsFromServer = json
+//                                                    self.performSegue(withIdentifier: "toApp", sender: Any?.self)
+//
+//                                                    }
+//                                            }
+//                                        }
+//                                    } else {
+//                                        self.loginButton.isEnabled = true
+//                                        AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.unknownError, viewController: self)
+//
+//                                    }
         
                 
                 })

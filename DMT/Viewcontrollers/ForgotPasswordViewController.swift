@@ -100,7 +100,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         var params = Dictionary<String, String>();
         params["request"] = "0"
         params["mail"] = emailTextField.text
-        ServerRequestManager.instance.forgotPostRequest(params: params as Dictionary<NSString, NSString>, url: ServerRequestConstants.URLS.FORGOT_PASSWORD_URL, postCompleted: { (response, msg, json) -> () in
+        ServerRequestManager.instance.forgotPostRequest(params: params as Parameters, url: ServerRequestConstants.URLS.FORGOT_PASSWORD_URL, postCompleted: { (response, msg, json) -> () in
             
            print(response)
             print(msg)

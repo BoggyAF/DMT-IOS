@@ -163,9 +163,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         params["telefon"] = phoneNumber
         params["request"] = ServerRequestConstants.JSON.REGISTER_REQUEST_NUMBER
         
-        ServerRequestManager.instance.postRequest(params: params as Dictionary<NSString, NSString>, url: ServerRequestConstants.URLS.REGISTER_URL, postCompleted: { (response, msg, json) -> () in
-            if  response != ""  {
-                if(msg == ServerRequestConstants.JSON.RESPONSE_ERROR) {
+        ServerRequestManager.instance.postRequest(params: params as Parameters, url: ServerRequestConstants.URLS.REGISTER_URL) { json in
+            if  json?.msg != ""  {
+                if(json?.msg == ServerRequestConstants.JSON.RESPONSE_ERROR) {
                     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
                         DispatchQueue.main.async {	
                             self.view.makeToast(ServerRequestConstants.resultErrors.invalidEmail, duration: 3.0, position:.bottom, title: "Error") { didTap in
@@ -178,16 +178,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
                             return
                         }
                     }
-                } else if(msg == ServerRequestConstants.JSON.RESPONSE_SUCCESS) {
+                } else if(json?.msg == ServerRequestConstants.JSON.RESPONSE_SUCCESS) {
                     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
                         DispatchQueue.main.async {
                             
                             print("JSON = \(json!)")
                             
                             AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.confirmEmail, viewController: self)
-                            
-                            
-                            
+  
                         }
                     }
                 }
@@ -196,8 +194,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
                 
             }
             
-            
-        })
+        }
         
         
     }
