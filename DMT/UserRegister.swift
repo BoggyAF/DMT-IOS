@@ -3,7 +3,7 @@
 //  DMT
 //
 //  Created by Boza Rares-Dorian on 28/04/2018.
-//  Copyright © 2018 Boggy. All rights reserved.
+//  Copyright © 2018 Boggy. All rights reserved. 
 //
 
 // STRUCTURA DATELOR DE PE SERVER ESTE DE FORMA

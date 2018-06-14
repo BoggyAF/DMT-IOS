@@ -6,7 +6,7 @@
 //  Copyright © 2018 Synergy.com.nl. All rights reserved.
 //
 
-import Foundation
+import Foundation 
 import UIKit
 
 enum ServerRequestConstants {

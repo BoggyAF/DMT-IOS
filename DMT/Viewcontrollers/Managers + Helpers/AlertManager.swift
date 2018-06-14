@@ -18,7 +18,7 @@ class AlertManager: NSObject {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction) in
             if(buttonToBeEnabled != nil) {
                 buttonToBeEnabled?.isEnabled = true;
-            }
+            } 
             if(closeOnExit) {
                 _ = viewController.navigationController?.popViewController(animated: true)
             }

@@ -18,7 +18,7 @@ class ServerRequestHelper:NSObject {
         
         let gradient = CAGradientLayer()
         gradient.frame = viewController.view.bounds
-        gradient.colors = [startColor.cgColor, finalColor.cgColor]
+        gradient.colors = [startColor.cgColor, finalColor.cgColor] 
         
         viewController.view.layer.insertSublayer(gradient, at: 0)
     }

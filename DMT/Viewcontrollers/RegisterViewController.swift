@@ -13,7 +13,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
 
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var nameField: UITextField! 
     @IBOutlet weak var phoneField: UITextField!
     
     @IBOutlet weak var profileImageView: UIImageView!

@@ -11,7 +11,7 @@ import UIKit
 class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var userScrollView: UIScrollView!
+    @IBOutlet weak var userScrollView: UIScrollView! 
     
     var emailConfirmationTextField: UITextField?
     

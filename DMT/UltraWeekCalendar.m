@@ -1,7 +1,7 @@
 //
 //  UltraWeekCalendar.m
 //  DMT
-//
+// 
 //  Created by Synergy on 24/05/2018.
 //  Copyright © 2018 Boggy. All rights reserved.
 //
@@ -140,14 +140,14 @@
 - (void)setCalendarDefaultValues
 {
     if (self.fixedMonthLabelWidth==0) {             self.fixedMonthLabelWidth = 45;}
-    if (self.monthTextColor == nil)                 {self.monthTextColor = UIColorFromRGB(0xCCCCCC);}
-    if (self.monthBGColor == nil)                   {self.monthBGColor = UIColorFromRGB(0xe54848);}
-    if (self.dayNameTextColor == nil)               {self.dayNameTextColor = UIColorFromRGB(0x626262);}
-    if (self.dayNumberTextColor == nil)             {self.dayNumberTextColor = UIColorFromRGB(0x232323);}
-    if (self.dayScrollBGColor == nil)               {self.dayScrollBGColor = UIColorFromRGB(0xCCCCCC);}
-    if (self.dayNameSelectedTextColor == nil)       {self.dayNameSelectedTextColor = UIColorFromRGB(0xCCCCCC);}
-    if (self.dayNumberSelectedTextColor == nil)     {self.dayNumberSelectedTextColor = UIColorFromRGB(0xCCCCCC);}
-    if (self.daySelectedBGColor == nil)             {self.daySelectedBGColor = UIColorFromRGB(0xe54848);}
+    if (self.monthTextColor == nil)                 {self.monthTextColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.4];}
+    if (self.monthBGColor == nil)                   {self.monthBGColor = [UIColor colorWithRed:0.47 green:0.45 blue:0.95 alpha:0.4];}
+    if (self.dayNameTextColor == nil)               {self.dayNameTextColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.4];}
+    if (self.dayNumberTextColor == nil)             {self.dayNumberTextColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.4];}
+    if (self.dayScrollBGColor == nil)               {self.dayScrollBGColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.4];}
+    if (self.dayNameSelectedTextColor == nil)       {self.dayNameSelectedTextColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.4];}
+    if (self.dayNumberSelectedTextColor == nil)     {self.dayNumberSelectedTextColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.4];}
+    if (self.daySelectedBGColor == nil)             {self.daySelectedBGColor = [UIColor colorWithRed:0.47 green:0.45 blue:0.95 alpha:0.4];}
     if (self.languageLocale == nil) { dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale currentLocale] localeIdentifier]]; } else { dateFormatter.locale = self.languageLocale;}
 }
 

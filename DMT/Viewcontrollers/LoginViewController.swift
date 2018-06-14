@@ -12,7 +12,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBOutlet weak var userScrollView: UIScrollView!
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel! 
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!

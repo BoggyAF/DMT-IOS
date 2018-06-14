@@ -1,5 +1,5 @@
 //
-//  CollectionViewCell.swift
+//  CollectionViewCell.swift 
 //  DMT
 //
 //  Created by Synergy on 23/05/2018.
