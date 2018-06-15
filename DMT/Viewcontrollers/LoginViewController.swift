@@ -10,9 +10,9 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-
+    
     @IBOutlet weak var userScrollView: UIScrollView!
-    @IBOutlet weak var resultLabel: UILabel! 
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
@@ -82,8 +82,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if emailField.isFirstResponder{
-        textField.resignFirstResponder()
-        passwordField.becomeFirstResponder()
+            textField.resignFirstResponder()
+            passwordField.becomeFirstResponder()
             return true
         }
         
@@ -92,7 +92,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func rememberSwitchPressed(sender: UISwitch){
         print("S-a salvat un nou switchState")
-       UserDefaults.standard.set(sender.isOn, forKey: UserDefaultsKeys.rememberSwitchState)
+        UserDefaults.standard.set(sender.isOn, forKey: UserDefaultsKeys.rememberSwitchState)
         if sender.isOn == false{
             print("Am sters user defaults")
             UserDefaults.standard.set(emailField.text, forKey: UserDefaultsKeys.noEmail)
@@ -128,78 +128,83 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let mail = emailField.text
         let parola = passwordField.text
+        
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.rememberSwitchState) == true {
             UserDefaults.standard.set(emailField.text, forKey: UserDefaultsKeys.savedEmail)
             UserDefaults.standard.set(passwordField.text, forKey: UserDefaultsKeys.savedPassword)
-            print("S-a salvat contul in userdef")
+            print("S-a salvat contul in userdefaults")
         }
-       
+        
         var params = Dictionary<String, String>();
-    params["mail"] = mail
-    params["parola"] = parola
-    params["request"] = ServerRequestConstants.JSON.LOGIN_REQUEST_NUMBER
+        params["mail"] = mail
+        params["parola"] = parola
+        params["request"] = ServerRequestConstants.JSON.LOGIN_REQUEST_NUMBER
         
-                ServerRequestManager.instance.postRequest(params: params as Parameters, url: ServerRequestConstants.URLS.LOGIN_URL, postCompleted: { json in
-//                    if  json?.msg != ""  {
-//                        if(json?.msg == ServerRequestConstants.JSON.RESPONSE_ERROR) {
-//                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-//                                                DispatchQueue.main.async {
-//                                                    self.loginButton.isEnabled = true
-//                                                    self.view.makeToast(json?.msg, duration: 3.0, position:.bottom, title: "Error") { didTap in
-//                                                        if didTap {
-//                                                            print("completion from tap")
-//                                                        } else {
-//                                                            print("completion without tap")
-//                                                        }
-//                                                    }
-//
-//                                                }
-//                                            }
-//                                        } else if(json?.msg == ServerRequestConstants.JSON.RESPONSE_SUCCESS) {
-//                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-//                                                DispatchQueue.main.async {
-//
-//                                                    // inainte de a face segue vom transfera obiectul json catre HomeVC
-//                                                    self.userDetailsFromServer = json
-//                                                    self.performSegue(withIdentifier: "toApp", sender: Any?.self)
-//
-//                                                    }
-//                                            }
-//                                        }
-//                                    } else {
-//                                        self.loginButton.isEnabled = true
-//                                        AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.unknownError, viewController: self)
-//
-//                                    }
-        
+        Services.loginService(params: params) { [weak self] result in
+            switch result {
+            case .success(let json):
+                if let responseFromJSON = json.response,
+                    let messageFromJSON = json.msg,
+                    let resultFromJSON = json.results {
+                    
+                    switch responseFromJSON {
+                    case ServerRequestConstants.JSON.RESPONSE_ERROR :
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                            DispatchQueue.main.async {
+                                self?.loginButton.isEnabled = true
+                                AlertManager.showGenericDialog(messageFromJSON, viewController: self!)
+                                
+                            }
+                        }
+                    case ServerRequestConstants.JSON.RESPONSE_SUCCESS:
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                            DispatchQueue.main.async {
+                                self?.loginButton.isEnabled = true
+                                // salvezi resultFromJSON astfel incat el sa fie vizibil pe tot parcursul aplicatiei
+                                print("resultFromJSON = \(resultFromJSON)")
+                            }
+                        }
+                    default:
+                        break
+                    }
+                }
                 
-                })
-            
+            case .error(let errorString):
+                print("errorString = \(errorString)")
+                
+                break
+                
             }
+            
+        }
+        
+    }
+    
+    
     // prepare(for:sender:) se apeleaza inainte de apelul performSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toApp" {
             if let vc = segue.destination as? HomeViewController {
                 vc.userDetails = userDetailsFromServer
-            
+                
             }
         }
-       segue.destination.navigationController?.setNavigationBarHidden(false, animated: false)
+        segue.destination.navigationController?.setNavigationBarHidden(false, animated: false)
         
     }
     func getImageFromBase64(base64:String) -> UIImage {
         let data = Data(base64Encoded: base64)
         return UIImage(data: data!)!
     }
-   
     
-        }
-        
+    
+}
 
-        
 
-    
-    
-    
-    
-    
+
+
+
+
+
+
+

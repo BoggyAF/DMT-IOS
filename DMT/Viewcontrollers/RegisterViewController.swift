@@ -10,10 +10,10 @@ import UIKit
 
 class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var userScrollView: UIScrollView!
-
+    
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var nameField: UITextField! 
+    @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -26,19 +26,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         profileImageView.addGestureRecognizer(tapImage)
         profileImageView.isUserInteractionEnabled = true
         
-     emailField.delegate = self
-     passwordField.delegate = self
-     nameField.delegate = self
-     phoneField.delegate = self
-     
+        emailField.delegate = self
+        passwordField.delegate = self
+        nameField.delegate = self
+        phoneField.delegate = self
+        
     }
     @objc func imageTapped(sender: UIImageView){
         print("ImageView Tapped!")
         let controller = UIImagePickerController()
-            controller.delegate = self
-            controller.sourceType = .photoLibrary
-            present(controller, animated: true, completion: nil)
-      
+        controller.delegate = self
+        controller.sourceType = .photoLibrary
+        present(controller, animated: true, completion: nil)
+        
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -50,7 +50,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         
         dismiss(animated: true, completion: nil)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         let showKeyboard: (Notification) -> Void = { notification in
@@ -150,6 +150,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
             }
             return
         }
+        
         let phoneNumber = phoneField.text
         let email = emailField.text
         let password = passwordField.text
@@ -163,37 +164,39 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         params["telefon"] = phoneNumber
         params["request"] = ServerRequestConstants.JSON.REGISTER_REQUEST_NUMBER
         
-        ServerRequestManager.instance.postRequest(params: params as Parameters, url: ServerRequestConstants.URLS.REGISTER_URL) { json in
-            if  json?.msg != ""  {
-                if(json?.msg == ServerRequestConstants.JSON.RESPONSE_ERROR) {
-                    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-                        DispatchQueue.main.async {	
-                            self.view.makeToast(ServerRequestConstants.resultErrors.invalidEmail, duration: 3.0, position:.bottom, title: "Error") { didTap in
-                                if didTap {
-                                    print("completion from tap")
-                                } else {
-                                    print("completion without tap")
-                                }
-                            }
-                            return
-                        }
-                    }
-                } else if(json?.msg == ServerRequestConstants.JSON.RESPONSE_SUCCESS) {
-                    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-                        DispatchQueue.main.async {
-                            
-                            print("JSON = \(json!)")
-                            
-                            AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.confirmEmail, viewController: self)
-  
-                        }
-                    }
-                }
-            } else {
-                AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.unknownError, viewController: self)
-                
-            }
-            
+        ServerRequestManager.instance.postRequest(params: params as Parameters,
+                                                  url: ServerRequestConstants.URLS.REGISTER_URL) { [weak self] json in
+                                                    
+                                                    if  json?.msg != ""  {
+                                                        if(json?.msg == ServerRequestConstants.JSON.RESPONSE_ERROR) {
+                                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                                                                DispatchQueue.main.async {
+                                                                    self.view.makeToast(ServerRequestConstants.resultErrors.invalidEmail, duration: 3.0, position:.bottom, title: "Error") { didTap in
+                                                                        if didTap {
+                                                                            print("completion from tap")
+                                                                        } else {
+                                                                            print("completion without tap")
+                                                                        }
+                                                                    }
+                                                                    return
+                                                                }
+                                                            }
+                                                        } else if(json?.msg == ServerRequestConstants.JSON.RESPONSE_SUCCESS) {
+                                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                                                                DispatchQueue.main.async {
+                                                                    
+                                                                    print("JSON = \(json!)")
+                                                                    
+                                                                    AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.confirmEmail, viewController: self)
+                                                                    
+                                                                }
+                                                            }
+                                                        }
+                                                    } else {
+                                                        AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.unknownError, viewController: self)
+                                                        
+                                                    }
+                                                    
         }
         
         
@@ -212,6 +215,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         }
         return imageData?.base64EncodedString()
     }
+    
+    func registerService(params: Parameters, completionHandler: @escaping (FetchResult<UserDetails>) -> Void) {
+        
+        ServerRequestManager.instance.postRequest(params: params as Parameters,
+                                                  url: ServerRequestConstants.URLS.LOGIN_URL,
+                                                  postCompleted: completionHandler)
+        
+        
+    }
+    
 }
 extension String {
     var isNumeric: Bool {
