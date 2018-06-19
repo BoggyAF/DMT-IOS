@@ -9,7 +9,10 @@
 import Foundation
 import UIKit
 
-
+public enum ImageFormat {
+    case png
+    case jpeg(CGFloat)
+}
 
 class ServerRequestHelper:NSObject {
       static let instance = ServerRequestHelper()
@@ -30,6 +33,22 @@ class ServerRequestHelper:NSObject {
             return regex.firstMatch(in: currentString, options: [], range: NSMakeRange(0, currentString.count)) != nil
         } catch { return false }
     }
-
     
+    func convertImageTobase64(format: ImageFormat, image:UIImage) -> String? {
+        var imageData: Data?
+        switch format {
+        case .png: imageData = UIImagePNGRepresentation(image)
+        case .jpeg(let compression): imageData = UIImageJPEGRepresentation(image, compression)
+        }
+        return imageData?.base64EncodedString()
+    }
+    
+}
+
+extension String {
+    var isNumeric: Bool {
+        guard self.count > 0 else { return false }
+        let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        return Set(self).isSubset(of: nums)
+    }
 }

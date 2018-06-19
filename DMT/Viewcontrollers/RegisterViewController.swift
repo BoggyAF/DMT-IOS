@@ -8,21 +8,23 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @IBOutlet weak var userScrollView: UIScrollView!
+class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     
+    @IBOutlet weak var userScrollView: UIScrollView!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
     
     @IBOutlet weak var profileImageView: UIImageView!
-    let imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap(gesture:)))
         let tapImage = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         view.addGestureRecognizer(tapGesture)
+        
         profileImageView.addGestureRecognizer(tapImage)
         profileImageView.isUserInteractionEnabled = true
         
@@ -32,6 +34,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         phoneField.delegate = self
         
     }
+    
     @objc func imageTapped(sender: UIImageView){
         print("ImageView Tapped!")
         let controller = UIImagePickerController()
@@ -40,16 +43,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         present(controller, animated: true, completion: nil)
         
     }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        profileImageView.image = image
-       
-        
-        dismiss(animated: true, completion: nil)
-    }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -90,6 +85,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
                 return
         }
         let contentInset = UIEdgeInsets(top:0, left: 0, bottom: frame.height + 10, right:0)
+        
         userScrollView.contentInset = contentInset
         userScrollView.scrollIndicatorInsets = contentInset
     }
@@ -98,63 +94,35 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         userScrollView.contentInset = UIEdgeInsets.zero
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailField.isFirstResponder{
-            textField.resignFirstResponder()
-            passwordField.becomeFirstResponder()
-        }
-        if passwordField.isFirstResponder{
-            textField.resignFirstResponder()
-            nameField.becomeFirstResponder()
-        }
-        if nameField.isFirstResponder{
-            textField.resignFirstResponder()
-            phoneField.becomeFirstResponder()
-        }
-        textField.resignFirstResponder()
-        return true
-    }
+   
     
     @IBAction func registerButton(_ sender: Any) {
-        if (emailField.text?.isEmpty)! == true || passwordField.text?.isEmpty == true || nameField.text?.isEmpty == true || phoneField.text?.isEmpty == true {
+        if (emailField.text?.isEmpty)! == true ||
+            passwordField.text?.isEmpty == true ||
+            nameField.text?.isEmpty == true ||
+            phoneField.text?.isEmpty == true {
             //            resultLabel.text = ServerRequestConstants.resultErrors.emptyText
             //            resultLabel.textColor = UIColor.white
-            self.view.makeToast(ServerRequestConstants.resultErrors.emptyText, duration: 3.0, position:.bottom, title: "Error") { didTap in
-                if didTap {
-                    print("completion from tap")
-                } else {
-                    print("completion without tap")
-                }
-            }
+            self.view.makeToast(ServerRequestConstants.resultErrors.emptyText, duration: 3.0, position:.bottom, title: "Error")
             return
         }
         if (emailField.text?.contains("@"))! == false && emailField.text?.contains(".") == false{
             //            resultLabel.text = ServerRequestConstants.resultErrors.invalidEmail
             //            resultLabel.textColor = UIColor.white
-            self.view.makeToast(ServerRequestConstants.resultErrors.invalidEmail, duration: 3.0, position:.bottom, title: "Error") { didTap in
-                if didTap {
-                    print("completion from tap")
-                } else {
-                    print("completion without tap")
-                }
-            }
+            self.view.makeToast(ServerRequestConstants.resultErrors.invalidEmail, duration: 3.0, position:.bottom, title: "Error")
             return
         }
         if phoneField.text?.isNumeric == false {
-            self.view.makeToast(ServerRequestConstants.resultErrors.invalidPhoneNumber, duration: 3.0, position:.bottom, title: "Error") { didTap in
-                if didTap {
-                    print("completion from tap")
-                } else {
-                    print("completion without tap")
-                }
-            }
+            self.view.makeToast(ServerRequestConstants.resultErrors.invalidPhoneNumber, duration: 3.0, position:.bottom, title: "Error")
             return
         }
-        let imageStr = convertImageTobase64(format: .png, image: profileImageView.image!)
+        let imageStr = ServerRequestHelper.instance.convertImageTobase64(format: .png, image: profileImageView.image!)
+        
         let phoneNumber = phoneField.text
         let email = emailField.text
         let password = passwordField.text
         let fullName = nameField.text
+        
         var params = Dictionary<String, String>();
         params["nume"] = fullName
         params["prenume"] = "empty"
@@ -202,34 +170,37 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         
     }
     
-    public enum ImageFormat {
-        case png
-        case jpeg(CGFloat)
-    }
-    
-    func convertImageTobase64(format: ImageFormat, image:UIImage) -> String? {
-        var imageData: Data?
-        switch format {
-        case .png: imageData = UIImagePNGRepresentation(image)
-        case .jpeg(let compression): imageData = UIImageJPEGRepresentation(image, compression)
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if emailField.isFirstResponder{
+            textField.resignFirstResponder()
+            passwordField.becomeFirstResponder()
         }
-        return imageData?.base64EncodedString()
-    }
-    
-    func registerService(params: Parameters, completionHandler: @escaping (FetchResult<UserDetails>) -> Void) {
-        
-        ServerRequestManager.instance.postRequest(params: params as Parameters,
-                                                  url: ServerRequestConstants.URLS.LOGIN_URL,
-                                                  postCompleted: completionHandler)
-        
-        
-    }
-    
-}
-extension String {
-    var isNumeric: Bool {
-        guard self.count > 0 else { return false }
-        let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        return Set(self).isSubset(of: nums)
+        if passwordField.isFirstResponder{
+            textField.resignFirstResponder()
+            nameField.becomeFirstResponder()
+        }
+        if nameField.isFirstResponder{
+            textField.resignFirstResponder()
+            phoneField.becomeFirstResponder()
+        }
+        textField.resignFirstResponder()
+        return true
     }
 }
+
+extension RegisterViewController: UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        profileImageView.image = image
+        
+        
+        dismiss(animated: true, completion: nil)
+    }
+}
+
