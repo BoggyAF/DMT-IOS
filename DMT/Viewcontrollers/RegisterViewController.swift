@@ -46,7 +46,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         profileImageView.image = image
-        let imageStr = convertImageTobase64(format: .png, image: profileImageView.image!)
+       
         
         dismiss(animated: true, completion: nil)
     }
@@ -150,55 +150,55 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
             }
             return
         }
-        
+        let imageStr = convertImageTobase64(format: .png, image: profileImageView.image!)
         let phoneNumber = phoneField.text
         let email = emailField.text
         let password = passwordField.text
         let fullName = nameField.text
         var params = Dictionary<String, String>();
         params["nume"] = fullName
-        params["prenume"] = "----"
+        params["prenume"] = "empty"
         params["tip"] = "1"
         params["mail"] = email
+        params["avatar"] = imageStr
         params["parola"] = password
         params["telefon"] = phoneNumber
         params["request"] = ServerRequestConstants.JSON.REGISTER_REQUEST_NUMBER
         
-        ServerRequestManager.instance.postRequest(params: params as Parameters,
-                                                  url: ServerRequestConstants.URLS.REGISTER_URL) { [weak self] json in
-                                                    
-                                                    if  json?.msg != ""  {
-                                                        if(json?.msg == ServerRequestConstants.JSON.RESPONSE_ERROR) {
-                                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-                                                                DispatchQueue.main.async {
-                                                                    self.view.makeToast(ServerRequestConstants.resultErrors.invalidEmail, duration: 3.0, position:.bottom, title: "Error") { didTap in
-                                                                        if didTap {
-                                                                            print("completion from tap")
-                                                                        } else {
-                                                                            print("completion without tap")
-                                                                        }
-                                                                    }
-                                                                    return
-                                                                }
-                                                            }
-                                                        } else if(json?.msg == ServerRequestConstants.JSON.RESPONSE_SUCCESS) {
-                                                            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-                                                                DispatchQueue.main.async {
-                                                                    
-                                                                    print("JSON = \(json!)")
-                                                                    
-                                                                    AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.confirmEmail, viewController: self)
-                                                                    
-                                                                }
-                                                            }
-                                                        }
-                                                    } else {
-                                                        AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.unknownError, viewController: self)
-                                                        
-                                                    }
-                                                    
+        Services.registerService(params: params) { [weak self] result in
+            switch result {
+            case .success(let json):
+                if let responseFromJSON = json.response,
+                    let messageFromJSON = json.msg
+                {
+                    
+                    switch messageFromJSON {
+                    case ServerRequestConstants.JSON.RESPONSE_ERROR :
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                            DispatchQueue.main.async {
+                                AlertManager.showGenericDialog(responseFromJSON, viewController: self!)
+                                
+                            }
+                        }
+                    case ServerRequestConstants.JSON.RESPONSE_SUCCESS:
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                            DispatchQueue.main.async {
+                                AlertManager.showGenericDialog(ServerRequestConstants.resultErrors.confirmEmail, viewController: self!)
+                                
+                            }
+                        }
+                    default:
+                        break
+                    }
+                }
+                
+            case .error(let errorString):
+                print("errorString = \(errorString)")
+                
+                break
+                
+            }
         }
-        
         
     }
     

@@ -100,15 +100,41 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         var params = Dictionary<String, String>();
         params["request"] = "0"
         params["mail"] = emailTextField.text
-        ServerRequestManager.instance.forgotPostRequest(params: params as Parameters, url: ServerRequestConstants.URLS.FORGOT_PASSWORD_URL, postCompleted: { (response, msg, json) -> () in
-            
-           print(response)
-            print(msg)
-            self.createAlert(msg: msg)
-            
-            
-        })
-        
+      	
+        Services.forgotPasswordService(params: params) { [weak self] result in
+            switch result {
+            case .success(let json):
+                if let responseFromJSON = json.response,
+                    let messageFromJSON = json.msg
+                {
+                    
+                    switch messageFromJSON {
+                    case ServerRequestConstants.JSON.RESPONSE_ERROR :
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                            DispatchQueue.main.async {
+                                AlertManager.showGenericDialog(responseFromJSON, viewController: self!)
+                                
+                            }
+                        }
+                    case ServerRequestConstants.JSON.RESPONSE_SUCCESS:
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                            DispatchQueue.main.async {
+                                AlertManager.showGenericDialog(responseFromJSON, viewController: self!)
+                                
+                            }
+                        }
+                    default:
+                        break
+                    }
+                }
+                
+            case .error(let errorString):
+                print("errorString = \(errorString)")
+                
+                break
+                
+            }
+        }
         
     }
     

@@ -33,7 +33,7 @@
                                             <constraint firstAttribute="width" secondItem="OIJ-sE-sbM" secondAttribute="height" multiplier="1:1" id="LQv-hG-HWF"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Type your email Adress..." placeholder="Type Your Email Address..." textAlignment="center" minimumFontSize="17" background="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="qmb-vO-6pC">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type Your Email Address..." textAlignment="center" minimumFontSize="17" background="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="qmb-vO-6pC">
                                         <rect key="frame" x="57" y="474.5" width="263" height="36.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qmb-vO-6pC" secondAttribute="height" multiplier="29:4" id="f49-J4-9RK"/>
@@ -675,7 +675,7 @@
         <!--ProfileViewController-->
         <scene sceneID="9L6-DS-SzU">
             <objects>
-                <viewController id="Z8h-rb-mVa" userLabel="ProfileViewController" sceneMemberID="viewController">
+                <viewController id="Z8h-rb-mVa" userLabel="ProfileViewController" customClass="ProfileViewController" customModule="DMT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YrG-aa-dnJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -798,6 +798,11 @@
                         <viewLayoutGuide key="safeArea" id="bU2-3t-pmx"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile" selectedImage="Profile" id="iZC-K2-XQB"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="KdP-dx-Sck" id="QMp-VE-pOt"/>
+                        <outlet property="phoneLabel" destination="dNO-WH-CUj" id="a3h-jJ-Suv"/>
+                        <outlet property="profileImageView" destination="bL5-AU-2qg" id="S6y-qm-NjX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuO-3R-jsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -935,7 +940,7 @@
         <image name="ic_mail" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="B9Q-Zf-qQN"/>
+        <segue reference="335-t4-Y92"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.13025489244611466" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
