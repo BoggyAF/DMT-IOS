@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var rememberSwitch: UISwitch!
     @IBOutlet weak var passwordField: UITextField!
     
-    var userDetailsFromServer: UserRegister? = nil
+    var userDetailsFromServer: UserDetails? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,14 +145,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             case .success(let json):
                 if let responseFromJSON = json.response,
                     let messageFromJSON = json.msg,
-                    let resultFromJSON = json.results {
-                    
-                    switch responseFromJSON {
+                    let resultFromJSON = json.result {
+                   
+                    switch messageFromJSON {
                     case ServerRequestConstants.JSON.RESPONSE_ERROR :
                         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
                             DispatchQueue.main.async {
                                 self?.loginButton.isEnabled = true
-                                AlertManager.showGenericDialog(messageFromJSON, viewController: self!)
+                                AlertManager.showGenericDialog(responseFromJSON, viewController: self!)
                                 
                             }
                         }
@@ -162,6 +162,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 self?.loginButton.isEnabled = true
                                 // salvezi resultFromJSON astfel incat el sa fie vizibil pe tot parcursul aplicatiei
                                 print("resultFromJSON = \(resultFromJSON)")
+                                self?.userDetailsFromServer = resultFromJSON
+                                self?.performSegue(withIdentifier: "toApp", sender: (Any).self)
                             }
                         }
                     default:

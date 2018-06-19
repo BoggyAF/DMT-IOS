@@ -30,5 +30,19 @@ class Services {
         
     }
     
+    static func registerService(params: Parameters, completionHandler: @escaping (FetchResult<UserRegister>) -> Void){
+        
+        
+        ServerRequestManager.instance.postRequest(params: params as Parameters,
+                                                  url: ServerRequestConstants.URLS.REGISTER_URL,
+                                                  postCompleted: completionHandler)
+    }
     
+    static func forgotPasswordService(params: Parameters, completionHandler: @escaping (FetchResult<UserRegister>) -> Void){
+    
+        ServerRequestManager.instance.postRequest(params: params as Parameters,
+                                                  url: ServerRequestConstants.URLS.FORGOT_PASSWORD_URL,
+                                                  postCompleted: completionHandler)
+    
+    }
 }
