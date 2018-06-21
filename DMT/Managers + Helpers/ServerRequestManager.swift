@@ -14,11 +14,12 @@ public typealias Parameters = [String:String]
 enum ServerRequestConstants {
     
     enum  URLS{
-        static let LOGIN_TEXT_RESPONSE = "http://students.doubleuchat.com/list.php";
-        static let LOGIN_BINARY_RESPONSE = "http://students.doubleuchat.com/list_bin.php";
-        static let LOGIN_URL = "http://students.doubleuchat.com/login.php";
-        static let REGISTER_URL = "http://students.doubleuchat.com/register.php";
-        static let FORGOT_PASSWORD_URL = "http://students.doubleuchat.com/forgotpw.php";
+        static let LOGIN_TEXT_RESPONSE = "http://students.doubleuchat.com/list.php"
+        static let LOGIN_BINARY_RESPONSE = "http://students.doubleuchat.com/list_bin.php"
+        static let LOGIN_URL = "http://students.doubleuchat.com/login.php"
+        static let REGISTER_URL = "http://students.doubleuchat.com/register.php"
+        static let FORGOT_PASSWORD_URL = "http://students.doubleuchat.com/forgotpw.php"
+        static let ALL_OFFERS_URL = "http://students.doubleuchat.com/listoffers.php"
     }
     
     
