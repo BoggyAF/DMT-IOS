@@ -72,7 +72,6 @@ class ServerRequestManager: NSObject {
                     
                     let decoder = JSONDecoder()
                     let objectJSON = try decoder.decode(T.self, from: data!)
-                  print(objectJSON)
                     postCompleted(FetchResult.success(objectJSON))
                     
                     

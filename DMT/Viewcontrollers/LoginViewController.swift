@@ -161,7 +161,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             DispatchQueue.main.async {
                                 self?.loginButton.isEnabled = true
                                 // salvezi resultFromJSON astfel incat el sa fie vizibil pe tot parcursul aplicatiei
-                                print("resultFromJSON = \(resultFromJSON)")
                                 self?.userDetailsFromServer = resultFromJSON
                                 self?.performSegue(withIdentifier: "toApp", sender: (Any).self)
                             }
@@ -183,13 +182,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // prepare(for:sender:) se apeleaza inainte de apelul performSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toApp" {
-            if let vc = segue.destination as? HomeViewController {
-                vc.userDetails = userDetailsFromServer
+
+        if let segueIdentifier = segue.identifier {
+            if segueIdentifier == "toApp" {
+                let barViewControllers = segue.destination as! UITabBarController
+                barViewControllers.viewControllers?.forEach{
+                    if let vc = $0 as? HomeViewController {
+                        vc.userDetails = userDetailsFromServer
+                    }
+                    
+                }
+                
+//                let nav = barViewControllers.viewControllers![0] as! UINavigationController
+//                let destinationViewController = nav.viewControllers[0] as! HomeViewController
+//                destinationViewController.userDetails = userDetailsFromServer
                 
             }
+
         }
         segue.destination.navigationController?.setNavigationBarHidden(false, animated: false)
         

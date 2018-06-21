@@ -670,7 +670,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDo-vc-vCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="543" y="37"/>
+            <point key="canvasLocation" x="801" y="875"/>
         </scene>
         <!--ProfileViewController-->
         <scene sceneID="9L6-DS-SzU">
@@ -806,7 +806,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuO-3R-jsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3657" y="36"/>
+            <point key="canvasLocation" x="2121" y="36"/>
         </scene>
         <!--Home-->
         <scene sceneID="Pps-RW-xeE">
@@ -896,7 +896,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzQ-XW-4hX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3657" y="-784"/>
+            <point key="canvasLocation" x="2121" y="-785"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="i9h-Xg-2M1">
@@ -915,7 +915,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsz-nm-oei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2667" y="37"/>
+            <point key="canvasLocation" x="1130" y="36"/>
         </scene>
     </scenes>
     <resources>
@@ -940,7 +940,7 @@
         <image name="ic_mail" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="335-t4-Y92"/>
+        <segue reference="B9Q-Zf-qQN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.13025489244611466" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -97,7 +97,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             }
             return
         }
-        var params = Dictionary<String, String>();
+        var params = Parameters()
         params["request"] = "0"
         params["mail"] = emailTextField.text
       	

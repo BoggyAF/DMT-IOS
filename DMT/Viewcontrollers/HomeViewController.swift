@@ -57,13 +57,55 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         calendar?.selectedDate = Date()
         self.view.addSubview(calendar!)
         
+        // oferte aduse
+        
+        var params = Parameters()
+        params["request"] = "0"
+        params["id_user"] = userDetails?.idUser
+        
+        Services.getAllOffers(params: params) { [weak self] result in
+            switch result {
+            case .success(let json):
+                if let responseFromJSON = json.response,
+                    let messageFromJSON = json.msg,
+                    let resultFromJSON = json.result
+                {
+                    
+                    switch messageFromJSON {
+                    case ServerRequestConstants.JSON.RESPONSE_ERROR :
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                            DispatchQueue.main.async {
+                                AlertManager.showGenericDialog(responseFromJSON, viewController: self!)
+                                
+                            }
+                        }
+                    case ServerRequestConstants.JSON.RESPONSE_SUCCESS:
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                            DispatchQueue.main.async {
+                                let offersNumber = resultFromJSON.count
+                                AlertManager.showGenericDialog("Avem \(offersNumber) oferte!", viewController: self!)
+                                
+                            }
+                        }
+                    default:
+                        break
+                    }
+                }
+                
+            case .error(let errorString):
+                print("errorString = \(errorString)")
+                
+                break
+                
+            }
+        }
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("HomeViewController - viewWillAppear")
-        if let userDetails = userDetails {
-            print("HomeViewController - user details: \(userDetails) ")
+        if let _ = userDetails {
+            print("HomeViewController - userDetails NOT NIL ")
         }
         
     }

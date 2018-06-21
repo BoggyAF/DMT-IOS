@@ -57,7 +57,7 @@ struct OffersDetail:Codable {
 struct OffersResult: Codable{
     let msg: String? // "ERROR" sau "SUCCESS"
     let response: String? // "Operatiune desfasurata cu succes."
-    let result:OffersDetail?
+    let result:[OffersDetail]?
 }
 
 
