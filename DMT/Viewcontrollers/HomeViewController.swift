@@ -11,30 +11,35 @@ import UIKit
 class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource
 
 {
-    var userDetails: UserDetails? // aceasta instanta este creata atunci cand se va face tranzitia din LoginVC in HomeVC
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    var  userDetails: UserDetails? // aceasta instanta este creata atunci cand se va face tranzitia din LoginVC in HomeVC
+    var  offerDetails: [OffersDetail] = []
+    var  offerNumber: Int?
     let reuseIdentifier = "cell"
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return offerDetails.count // il gaseste ca nil
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as!CollectionViewCell
-        
-        cell.nameLabel.text = self.items[indexPath.item]
+
+        cell.offerTitleLabel.text = self.offerDetails[indexPath.item].titluOferta
+        cell.offerLocationLabel.text = self.offerDetails[indexPath.item].numeLocatie
+        cell.offerPriceLabel.text = self.offerDetails[indexPath.item].pretOferta
         cell.backgroundColor = UIColor.cyan
-        
+
         return cell
-        
+
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("celula selectata -  \(indexPath.item)!")
 
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -66,11 +71,16 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         Services.getAllOffers(params: params) { [weak self] result in
             switch result {
             case .success(let json):
-                if let responseFromJSON = json.response,
-                    let messageFromJSON = json.msg,
-                    let resultFromJSON = json.result
-                {
-                    
+                guard let responseFromJSON = json.response else {
+                    return
+                }
+                guard let messageFromJSON = json.msg else {
+                    return
+                }
+                guard let resultFromJSON = json.result else {
+                    return
+                }
+                
                     switch messageFromJSON {
                     case ServerRequestConstants.JSON.RESPONSE_ERROR :
                         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
@@ -82,16 +92,18 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
                     case ServerRequestConstants.JSON.RESPONSE_SUCCESS:
                         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
                             DispatchQueue.main.async {
-                                let offersNumber = resultFromJSON.count
-                                AlertManager.showGenericDialog("Avem \(offersNumber) oferte!", viewController: self!)
+                                self?.offerNumber = resultFromJSON.count
+                                self?.offerDetails = resultFromJSON
+                                print(self?.offerDetails[1].numeLocatie as Any)
+                                AlertManager.showGenericDialog("Avem \(String(describing: self?.offerNumber)) oferte!", viewController: self!)
                                 
                             }
                         }
                     default:
                         break
                     }
-                }
                 
+    
             case .error(let errorString):
                 print("errorString = \(errorString)")
                 
@@ -99,7 +111,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
                 
             }
         }
-    
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,11 +122,15 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         
     }
     func dateButtonClicked() {
-        
+        DispatchQueue.main.async {
+            		self.collectionView.reloadData()
+        }
     }
-
+    
+    
     
 
    
 
 }
+

@@ -9,7 +9,10 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var jobImageView: UIImageView!
+    @IBOutlet weak var offerTitleLabel: UILabel!
+    @IBOutlet weak var offerLocationLabel: UILabel!
+    
+    @IBOutlet weak var offerPriceLabel: UILabel!
+    
+
 }
