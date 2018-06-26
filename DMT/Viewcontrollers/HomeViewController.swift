@@ -51,6 +51,8 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
 
     }
     
+    
+    
     var calendar : UltraWeekCalendar? = nil
         
     override func viewDidLoad() {
@@ -66,6 +68,8 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         calendar?.selectedDate = Date()
         self.view.addSubview(calendar!)
         collectionView.backgroundView = noOffersView
+        
+        prepareTableView()
         
         if offerNumber != nil {
             self.noOffersLabel.text = ""
@@ -123,6 +127,14 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
             }
         }
       
+    }
+    
+    func prepareCollectionView() {
+        collectionView.dataSource = self
+        print("ViewController - \(OfferCollectionViewCell.ReuseIdentifier)")
+        
+        let nib = UINib(nibName: OfferCollectionViewCell.NibName, bundle: .main)
+        collectionView.register(UINib(nibName: OfferCollectionViewCell.NibName, bundle: nil), forCellWithReuseIdentifier: OfferCollectionViewCell.ReuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {

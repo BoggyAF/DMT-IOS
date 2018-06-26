@@ -33,7 +33,7 @@
                                             <constraint firstAttribute="width" secondItem="OIJ-sE-sbM" secondAttribute="height" multiplier="1:1" id="LQv-hG-HWF"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type Your Email Address..." textAlignment="center" minimumFontSize="17" background="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="qmb-vO-6pC">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type Your Email Address..." textAlignment="center" minimumFontSize="17" background="TextBox1" translatesAutoresizingMaskIntoConstraints="NO" id="qmb-vO-6pC">
                                         <rect key="frame" x="57" y="474.5" width="263" height="36.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qmb-vO-6pC" secondAttribute="height" multiplier="29:4" id="f49-J4-9RK"/>
@@ -238,16 +238,13 @@
                                                                         </connections>
                                                                     </button>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yUR-3x-AkQ" userLabel="mailFull">
-                                                                        <rect key="frame" x="38" y="328.5" width="300" height="30"/>
+                                                                        <rect key="frame" x="38" y="336.5" width="300" height="26"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lcC-4P-hbo" userLabel="mail">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
                                                                                 <subviews>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mail" translatesAutoresizingMaskIntoConstraints="NO" id="2RQ-rA-Aoc">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                                                                    </imageView>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mail..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1C8-Hh-10y" userLabel="mailText">
-                                                                                        <rect key="frame" x="29" y="0.0" width="271" height="24"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
                                                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -261,7 +258,7 @@
                                                                                 </subviews>
                                                                             </stackView>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="BWZ-Ro-Bg8">
-                                                                                <rect key="frame" x="0.0" y="29" width="300" height="1"/>
+                                                                                <rect key="frame" x="0.0" y="25" width="300" height="1"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <constraints>
@@ -269,16 +266,13 @@
                                                                         </constraints>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VdX-yo-MpV" userLabel="passFull">
-                                                                        <rect key="frame" x="38" y="413.5" width="300" height="30"/>
+                                                                        <rect key="frame" x="38" y="417.5" width="300" height="26"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eDS-H7-gfF" userLabel="pass">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
                                                                                 <subviews>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_lock" translatesAutoresizingMaskIntoConstraints="NO" id="uzj-pI-Acb">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                                                                    </imageView>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLq-0Y-Gis" userLabel="passText">
-                                                                                        <rect key="frame" x="29" y="0.0" width="271" height="24"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
                                                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -292,7 +286,7 @@
                                                                                 </subviews>
                                                                             </stackView>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="2Cx-N6-Ppc">
-                                                                                <rect key="frame" x="0.0" y="29" width="300" height="1"/>
+                                                                                <rect key="frame" x="0.0" y="25" width="300" height="1"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <constraints>
@@ -408,14 +402,8 @@
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UCX-NT-6GD" userLabel="mail">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                 <subviews>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mail" translatesAutoresizingMaskIntoConstraints="NO" id="tRE-CX-5DM">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="17"/>
-                                                                                        <constraints>
-                                                                                            <constraint firstAttribute="width" secondItem="tRE-CX-5DM" secondAttribute="height" multiplier="1.2:1" id="rNk-2L-aOS"/>
-                                                                                        </constraints>
-                                                                                    </imageView>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mail..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xau-6a-ehW" userLabel="mailText">
-                                                                                        <rect key="frame" x="25" y="0.0" width="275" height="17"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -442,14 +430,8 @@
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-bi-wVv" userLabel="pass">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                 <subviews>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lacat" translatesAutoresizingMaskIntoConstraints="NO" id="4sl-uh-864" userLabel="pass">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="17"/>
-                                                                                        <constraints>
-                                                                                            <constraint firstAttribute="width" secondItem="4sl-uh-864" secondAttribute="height" multiplier="1.2:1" id="O5V-ce-IO4"/>
-                                                                                        </constraints>
-                                                                                    </imageView>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHC-U9-GwL" userLabel="passText">
-                                                                                        <rect key="frame" x="25" y="0.0" width="275" height="17"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -476,14 +458,8 @@
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m2D-fu-IE3" userLabel="name">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                 <subviews>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NameGuy" translatesAutoresizingMaskIntoConstraints="NO" id="p1W-5e-N4e" userLabel="name">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="17"/>
-                                                                                        <constraints>
-                                                                                            <constraint firstAttribute="width" secondItem="p1W-5e-N4e" secondAttribute="height" multiplier="1.2:1" id="QAE-9w-dP0"/>
-                                                                                        </constraints>
-                                                                                    </imageView>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cav-Sf-j3t" userLabel="nameText">
-                                                                                        <rect key="frame" x="25" y="0.0" width="275" height="17"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -510,14 +486,8 @@
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YU5-jV-IO8" userLabel="phone">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                 <subviews>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tel" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-5U-Coh" userLabel="phone">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="17" height="17"/>
-                                                                                        <constraints>
-                                                                                            <constraint firstAttribute="width" secondItem="7rM-5U-Coh" secondAttribute="height" multiplier="1:1" id="XfV-bG-jtk"/>
-                                                                                        </constraints>
-                                                                                    </imageView>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xuu-Jb-C6a" userLabel="phoneText">
-                                                                                        <rect key="frame" x="22" y="0.0" width="278" height="17"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -538,7 +508,7 @@
                                                                             <constraint firstItem="VlD-sq-DHd" firstAttribute="width" secondItem="YU5-jV-IO8" secondAttribute="width" id="kza-u3-50x"/>
                                                                         </constraints>
                                                                     </stackView>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PersonLog" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-48-R5q">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-48-R5q">
                                                                         <rect key="frame" x="121.5" y="12" width="131" height="131.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="gF4-48-R5q" secondAttribute="height" multiplier="1:1" id="dtQ-7k-W3R"/>
@@ -827,7 +797,7 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DkG-h3-lfn">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="113.5" width="375" height="553.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yJ3-Wm-8wp">
                                     <size key="itemSize" width="413" height="78"/>
@@ -887,7 +857,7 @@
                             <constraint firstItem="dby-VV-Mib" firstAttribute="top" secondItem="eUc-Ns-Ntu" secondAttribute="top" id="FyS-bZ-i3A"/>
                             <constraint firstItem="aKP-cd-pRq" firstAttribute="height" secondItem="Xi0-1B-H5b" secondAttribute="height" id="Kbv-OT-Ndf"/>
                             <constraint firstItem="DkG-h3-lfn" firstAttribute="leading" secondItem="eUc-Ns-Ntu" secondAttribute="leading" id="ROr-LJ-LJr"/>
-                            <constraint firstItem="DkG-h3-lfn" firstAttribute="height" secondItem="Xi0-1B-H5b" secondAttribute="height" multiplier="0.82" id="ZLf-xG-ayf"/>
+                            <constraint firstItem="DkG-h3-lfn" firstAttribute="height" secondItem="Xi0-1B-H5b" secondAttribute="height" multiplier="0.83" id="ZLf-xG-ayf"/>
                             <constraint firstItem="eUc-Ns-Ntu" firstAttribute="trailing" secondItem="DkG-h3-lfn" secondAttribute="trailing" id="ZSO-np-QTa"/>
                             <constraint firstItem="aKP-cd-pRq" firstAttribute="centerX" secondItem="Xi0-1B-H5b" secondAttribute="centerX" id="cUI-1b-AsS"/>
                             <constraint firstItem="aKP-cd-pRq" firstAttribute="centerY" secondItem="Xi0-1B-H5b" secondAttribute="centerY" id="hIq-ga-p7r"/>
@@ -952,28 +922,25 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddProfileImage" width="147" height="141"/>
         <image name="BG" width="414" height="736"/>
         <image name="Back" width="109" height="46"/>
         <image name="Fax" width="12" height="11"/>
         <image name="Home" width="18" height="15"/>
         <image name="HomeBG" width="414" height="736"/>
-        <image name="Lacat" width="14" height="17"/>
         <image name="Line" width="279" height="1"/>
         <image name="LoadingBG" width="414" height="736"/>
         <image name="Lock" width="141" height="141"/>
         <image name="LogoWhite" width="2926" height="2926"/>
-        <image name="Mail" width="17" height="13"/>
-        <image name="NameGuy" width="16" height="16"/>
         <image name="PersonLog" width="84" height="84"/>
         <image name="Profile" width="16" height="18"/>
         <image name="Rectangle" width="279" height="51"/>
         <image name="Send" width="109" height="46"/>
         <image name="Tel" width="9" height="14"/>
-        <image name="ic_lock" width="24" height="24"/>
-        <image name="ic_mail" width="24" height="24"/>
+        <image name="TextBox1" width="288" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="335-t4-Y92"/>
+        <segue reference="B9Q-Zf-qQN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.13025489244611466" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

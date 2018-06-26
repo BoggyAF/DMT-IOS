@@ -28,6 +28,8 @@
 		5A5CEF77208F92CD0098B4E3 /* ServerRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */; };
 		5A5CEF79208F93290098B4E3 /* ServerRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEF78208F93290098B4E3 /* ServerRequestManager.swift */; };
 		5A5CEF7B208F93330098B4E3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEF7A208F93330098B4E3 /* AlertManager.swift */; };
+		5A698DF020E2F72400626209 /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A698DEE20E2F72400626209 /* OfferCollectionViewCell.swift */; };
+		5A698DF120E2F72400626209 /* OfferCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A698DEF20E2F72400626209 /* OfferCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequestHelper.swift; sourceTree = "<group>"; };
 		5A5CEF78208F93290098B4E3 /* ServerRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequestManager.swift; sourceTree = "<group>"; };
 		5A5CEF7A208F93330098B4E3 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		5A698DEE20E2F72400626209 /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
+		5A698DEF20E2F72400626209 /* OfferCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,8 @@
 				5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */,
 				5A2ADD5D204BF2BF00602D83 /* AppDelegate.swift */,
 				5A2ADD61204BF2BF00602D83 /* Main.storyboard */,
+				5A698DEE20E2F72400626209 /* OfferCollectionViewCell.swift */,
+				5A698DEF20E2F72400626209 /* OfferCollectionViewCell.xib */,
 				5A2ADD64204BF2BF00602D83 /* Assets.xcassets */,
 				5A2ADD66204BF2BF00602D83 /* LaunchScreen.storyboard */,
 				5A2ADD69204BF2BF00602D83 /* Info.plist */,
@@ -304,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A2ADD68204BF2BF00602D83 /* LaunchScreen.storyboard in Resources */,
+				5A698DF120E2F72400626209 /* OfferCollectionViewCell.xib in Resources */,
 				5A2ADD65204BF2BF00602D83 /* Assets.xcassets in Resources */,
 				5A2ADD63204BF2BF00602D83 /* Main.storyboard in Resources */,
 			);
@@ -339,6 +346,7 @@
 				42FC3003209491DB00037E08 /* UserRegister.swift in Sources */,
 				5A2ADD60204BF2BF00602D83 /* LoginViewController.swift in Sources */,
 				5A2ADD5E204BF2BF00602D83 /* AppDelegate.swift in Sources */,
+				5A698DF020E2F72400626209 /* OfferCollectionViewCell.swift in Sources */,
 				42F74F9A20BC2D5E00DE8F07 /* ForgotPasswordViewController.swift in Sources */,
 				3C7904EB20B5A479008E0EB3 /* CollectionViewCell.swift in Sources */,
 				5A2ADD8E204BFBCE00602D83 /* Constants.swift in Sources */,
