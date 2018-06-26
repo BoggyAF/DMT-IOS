@@ -12,12 +12,16 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
 
 {
     
+    @IBOutlet weak var noOffersLabel: UILabel!
+    @IBOutlet var noOffersView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var  userDetails: UserDetails? // aceasta instanta este creata atunci cand se va face tranzitia din LoginVC in HomeVC
     var  offerDetails: [OffersDetail] = []
     var  offerNumber: Int?
     let reuseIdentifier = "cell"
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+    
+   
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return offerDetails.count // il gaseste ca nil
@@ -29,7 +33,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         cell.offerTitleLabel.text = self.offerDetails[indexPath.item].titluOferta
         cell.offerLocationLabel.text = self.offerDetails[indexPath.item].numeLocatie
         cell.offerPriceLabel.text = self.offerDetails[indexPath.item].pretOferta
-        cell.backgroundColor = UIColor.cyan
+        cell.backgroundColor = UIColor.white
 
         return cell
 
@@ -61,6 +65,13 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         calendar?.endDate = someDateTime
         calendar?.selectedDate = Date()
         self.view.addSubview(calendar!)
+        collectionView.backgroundView = noOffersView
+        
+        if offerNumber != nil {
+            self.noOffersLabel.text = ""
+        } else {
+            self.noOffersLabel.text = "No Offers"
+        }
         
         // oferte aduse
         

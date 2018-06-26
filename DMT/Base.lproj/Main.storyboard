@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -827,7 +827,7 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DkG-h3-lfn">
-                                <rect key="frame" x="0.0" y="125" width="375" height="493"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yJ3-Wm-8wp">
                                     <size key="itemSize" width="413" height="78"/>
@@ -881,13 +881,13 @@
                         </subviews>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="eUc-Ns-Ntu" firstAttribute="bottom" secondItem="DkG-h3-lfn" secondAttribute="bottom" id="9eg-hJ-HBt"/>
+                            <constraint firstAttribute="bottom" secondItem="DkG-h3-lfn" secondAttribute="bottom" id="29T-9g-Dh4"/>
                             <constraint firstItem="aKP-cd-pRq" firstAttribute="width" secondItem="Xi0-1B-H5b" secondAttribute="width" id="Aez-t2-E7I"/>
                             <constraint firstItem="dby-VV-Mib" firstAttribute="leading" secondItem="eUc-Ns-Ntu" secondAttribute="leading" id="Cbv-ag-1LA"/>
                             <constraint firstItem="dby-VV-Mib" firstAttribute="top" secondItem="eUc-Ns-Ntu" secondAttribute="top" id="FyS-bZ-i3A"/>
                             <constraint firstItem="aKP-cd-pRq" firstAttribute="height" secondItem="Xi0-1B-H5b" secondAttribute="height" id="Kbv-OT-Ndf"/>
                             <constraint firstItem="DkG-h3-lfn" firstAttribute="leading" secondItem="eUc-Ns-Ntu" secondAttribute="leading" id="ROr-LJ-LJr"/>
-                            <constraint firstItem="DkG-h3-lfn" firstAttribute="top" secondItem="eUc-Ns-Ntu" secondAttribute="top" constant="105" id="UiU-30-Xtf"/>
+                            <constraint firstItem="DkG-h3-lfn" firstAttribute="height" secondItem="Xi0-1B-H5b" secondAttribute="height" multiplier="0.82" id="ZLf-xG-ayf"/>
                             <constraint firstItem="eUc-Ns-Ntu" firstAttribute="trailing" secondItem="DkG-h3-lfn" secondAttribute="trailing" id="ZSO-np-QTa"/>
                             <constraint firstItem="aKP-cd-pRq" firstAttribute="centerX" secondItem="Xi0-1B-H5b" secondAttribute="centerX" id="cUI-1b-AsS"/>
                             <constraint firstItem="aKP-cd-pRq" firstAttribute="centerY" secondItem="Xi0-1B-H5b" secondAttribute="centerY" id="hIq-ga-p7r"/>
@@ -898,11 +898,38 @@
                     <tabBarItem key="tabBarItem" title="Home" image="Home" id="pfw-D4-Rbo"/>
                     <connections>
                         <outlet property="collectionView" destination="DkG-h3-lfn" id="Y4b-P6-g0h"/>
+                        <outlet property="noOffersLabel" destination="E2h-6A-pOD" id="6qg-kh-NDX"/>
+                        <outlet property="noOffersView" destination="43E-IZ-f7T" id="iQZ-KY-hAA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzQ-XW-4hX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="43E-IZ-f7T" userLabel="noOffersView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBG" translatesAutoresizingMaskIntoConstraints="NO" id="s7d-QF-zvA">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Offers For Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2h-6A-pOD">
+                            <rect key="frame" x="43" y="54" width="154" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="s7d-QF-zvA" firstAttribute="centerY" secondItem="43E-IZ-f7T" secondAttribute="centerY" id="4gd-Cn-JMu"/>
+                        <constraint firstItem="s7d-QF-zvA" firstAttribute="width" secondItem="43E-IZ-f7T" secondAttribute="width" id="Hkb-up-DYu"/>
+                        <constraint firstItem="E2h-6A-pOD" firstAttribute="centerX" secondItem="43E-IZ-f7T" secondAttribute="centerX" id="Ok6-EI-nhw"/>
+                        <constraint firstItem="E2h-6A-pOD" firstAttribute="centerY" secondItem="43E-IZ-f7T" secondAttribute="centerY" id="f5K-Sm-PK1"/>
+                        <constraint firstItem="s7d-QF-zvA" firstAttribute="height" secondItem="43E-IZ-f7T" secondAttribute="height" id="qgk-MO-jU0"/>
+                        <constraint firstItem="s7d-QF-zvA" firstAttribute="centerX" secondItem="43E-IZ-f7T" secondAttribute="centerX" id="uPJ-cc-acD"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="SmV-VJ-BW1"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="2084" y="-790"/>
+            <point key="canvasLocation" x="2084" y="-790.25487256371821"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="i9h-Xg-2M1">
@@ -946,7 +973,7 @@
         <image name="ic_mail" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="B9Q-Zf-qQN"/>
+        <segue reference="335-t4-Y92"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.13025489244611466" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
