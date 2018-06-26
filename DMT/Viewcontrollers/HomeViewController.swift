@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         self.view.addSubview(calendar!)
         collectionView.backgroundView = noOffersView
         
-        prepareTableView()
+        prepareCollectionView()
         
         if offerNumber != nil {
             self.noOffersLabel.text = ""
