@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3C4DC77C20D3CF7B0049BD21 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4DC77B20D3CF7B0049BD21 /* Services.swift */; };
-		3C7904EB20B5A479008E0EB3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7904EA20B5A479008E0EB3 /* CollectionViewCell.swift */; };
 		3C8A657C20B692E20099B204 /* UltraWeekCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A657B20B692E20099B204 /* UltraWeekCalendar.m */; };
 		3C9E9CD920DBA5100084ECA9 /* OffersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9E9CD820DBA5100084ECA9 /* OffersResult.swift */; };
 		423C035C20D8E01500351AC4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423C035B20D8E01500351AC4 /* ProfileViewController.swift */; };
@@ -30,6 +29,7 @@
 		5A5CEF7B208F93330098B4E3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEF7A208F93330098B4E3 /* AlertManager.swift */; };
 		5A698DF020E2F72400626209 /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A698DEE20E2F72400626209 /* OfferCollectionViewCell.swift */; };
 		5A698DF120E2F72400626209 /* OfferCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A698DEF20E2F72400626209 /* OfferCollectionViewCell.xib */; };
+		5AF966DC20EBBF8600991F20 /* OfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF966DB20EBBF8600991F20 /* OfferDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		3C4DC77B20D3CF7B0049BD21 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
-		3C7904EA20B5A479008E0EB3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = DMT/CollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3C8A657A20B692B10099B204 /* UltraWeekCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UltraWeekCalendar.h; sourceTree = "<group>"; };
 		3C8A657B20B692E20099B204 /* UltraWeekCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UltraWeekCalendar.m; sourceTree = "<group>"; };
 		3C9E9CD820DBA5100084ECA9 /* OffersResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersResult.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		5A5CEF7A208F93330098B4E3 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5A698DEE20E2F72400626209 /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A698DEF20E2F72400626209 /* OfferCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferCollectionViewCell.xib; sourceTree = "<group>"; };
+		5AF966DB20EBBF8600991F20 /* OfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +120,7 @@
 		5A2ADD51204BF2BF00602D83 = {
 			isa = PBXGroup;
 			children = (
+				5AF966DB20EBBF8600991F20 /* OfferDetailsViewController.swift */,
 				5A2ADD5C204BF2BF00602D83 /* DMT */,
 				5A2ADD71204BF2BF00602D83 /* DMTTests */,
 				5A2ADD7C204BF2BF00602D83 /* DMTUITests */,
@@ -146,7 +147,6 @@
 				3C8A657A20B692B10099B204 /* UltraWeekCalendar.h */,
 				3C8A657B20B692E20099B204 /* UltraWeekCalendar.m */,
 				426F0F7020B16E3C0088E70A /* DMT-Bridging-Header.h */,
-				3C7904EA20B5A479008E0EB3 /* CollectionViewCell.swift */,
 				424953CF20A3188300396E8D /* Toast.swift */,
 				5A2ADD8D204BFBCE00602D83 /* Constants.swift */,
 				5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */,
@@ -348,11 +348,11 @@
 				5A2ADD5E204BF2BF00602D83 /* AppDelegate.swift in Sources */,
 				5A698DF020E2F72400626209 /* OfferCollectionViewCell.swift in Sources */,
 				42F74F9A20BC2D5E00DE8F07 /* ForgotPasswordViewController.swift in Sources */,
-				3C7904EB20B5A479008E0EB3 /* CollectionViewCell.swift in Sources */,
 				5A2ADD8E204BFBCE00602D83 /* Constants.swift in Sources */,
 				5A5CEF7B208F93330098B4E3 /* AlertManager.swift in Sources */,
 				423C035C20D8E01500351AC4 /* ProfileViewController.swift in Sources */,
 				5A5CEF77208F92CD0098B4E3 /* ServerRequestHelper.swift in Sources */,
+				5AF966DC20EBBF8600991F20 /* OfferDetailsViewController.swift in Sources */,
 				426F0F7520B16F290088E70A /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,7 +525,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VFC8S3J559;
+				DEVELOPMENT_TEAM = 4857534772;
 				INFOPLIST_FILE = DMT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -544,7 +544,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VFC8S3J559;
+				DEVELOPMENT_TEAM = 4857534772;
 				INFOPLIST_FILE = DMT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

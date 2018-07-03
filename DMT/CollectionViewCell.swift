@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var offerTitleLabel: UILabel!
-    @IBOutlet weak var offerLocationLabel: UILabel!
-    
-    @IBOutlet weak var offerPriceLabel: UILabel!
-    
-
-}
+//class CollectionViewCell: UICollectionViewCell {
+//    @IBOutlet weak var offerTitleLabel: UILabel!
+//    @IBOutlet weak var offerLocationLabel: UILabel!
+//    
+//    @IBOutlet weak var offerPriceLabel: UILabel!
+//    
+//
+//}

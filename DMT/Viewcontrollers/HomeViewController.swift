@@ -28,12 +28,13 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as!CollectionViewCell
+        let cell = Bundle.main.loadNibNamed("OfferCollectionViewCell", owner: self, options: nil)?.first as! OfferCollectionViewCell
 
-        cell.offerTitleLabel.text = self.offerDetails[indexPath.item].titluOferta
-        cell.offerLocationLabel.text = self.offerDetails[indexPath.item].numeLocatie
-        cell.offerPriceLabel.text = self.offerDetails[indexPath.item].pretOferta
-        cell.backgroundColor = UIColor.white
+        cell.headerLabel.text = self.offerDetails[indexPath.item].titluOferta
+        cell.locationLabel?.text = self.offerDetails[indexPath.item].numeLocatie
+        cell.priceLabel.text = self.offerDetails[indexPath.item].pretOferta
+        cell.jobLabel.text = self.offerDetails[indexPath.item].specializare
+        
 
         return cell
 
@@ -44,12 +45,12 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
 
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width-15, height: 80)
-
-    }
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: UIScreen.main.bounds.width-15, height: 80)
+//
+//    }
     
     
     
@@ -135,7 +136,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         print("ViewController - \(OfferCollectionViewCell.ReuseIdentifier)")
         
         let nib = UINib(nibName: OfferCollectionViewCell.NibName, bundle: .main)
-        collectionView.register(UINib(nibName: OfferCollectionViewCell.NibName, bundle: nil), forCellWithReuseIdentifier: OfferCollectionViewCell.ReuseIdentifier)
+        collectionView.register(nib, forCellWithReuseIdentifier: OfferCollectionViewCell.ReuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {

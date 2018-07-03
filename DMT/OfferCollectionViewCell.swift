@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OfferCollectionViewCell: UITableViewCell {
+class OfferCollectionViewCell: UICollectionViewCell {
 
     
     @IBOutlet weak var priceLabel: UILabel!
@@ -21,7 +21,6 @@ class OfferCollectionViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
     }
     
     func load() {
