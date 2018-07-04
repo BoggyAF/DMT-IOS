@@ -57,6 +57,6 @@ struct UserDetails: Codable {
 struct UserRegister: Codable{
     let msg: String? // "ERROR" sau "SUCCESS"
     let response: String? // "Nu a fost specificat ID-ul de utilizator."
-    let result:UserDetails?
+    let result :UserDetails?
 }
 

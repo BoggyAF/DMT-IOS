@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class LoginViewController: UIViewController, UITextFieldDelegate {
+import CoreLocation
+class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     
     @IBOutlet weak var userScrollView: UIScrollView!
@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     
     var userDetailsFromServer: UserDetails? = nil
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tapGesture)
         emailField.delegate = self
         passwordField.delegate = self
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.rememberSwitchState) == true{
             emailField.text = UserDefaults.standard.string(forKey: UserDefaultsKeys.savedEmail)
             passwordField.text = UserDefaults.standard.string(forKey: UserDefaultsKeys.savedPassword)        }
@@ -87,6 +95,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         textField.resignFirstResponder()
         return true
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     @IBAction func rememberSwitchPressed(sender: UISwitch){
         print("S-a salvat un nou switchState")

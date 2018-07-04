@@ -11,6 +11,7 @@
 		3C8A657C20B692E20099B204 /* UltraWeekCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A657B20B692E20099B204 /* UltraWeekCalendar.m */; };
 		3C9E9CD920DBA5100084ECA9 /* OffersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9E9CD820DBA5100084ECA9 /* OffersResult.swift */; };
 		423C035C20D8E01500351AC4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423C035B20D8E01500351AC4 /* ProfileViewController.swift */; };
+		4248014120ECD24F0051AF46 /* ClickedOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4248014020ECD24E0051AF46 /* ClickedOffer.swift */; };
 		424953D020A3188300396E8D /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424953CF20A3188300396E8D /* Toast.swift */; };
 		426F0F7520B16F290088E70A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F0F7420B16F290088E70A /* HomeViewController.swift */; };
 		42F74F9A20BC2D5E00DE8F07 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F74F9920BC2D5E00DE8F07 /* ForgotPasswordViewController.swift */; };
@@ -55,6 +56,7 @@
 		3C8A657B20B692E20099B204 /* UltraWeekCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UltraWeekCalendar.m; sourceTree = "<group>"; };
 		3C9E9CD820DBA5100084ECA9 /* OffersResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersResult.swift; sourceTree = "<group>"; };
 		423C035B20D8E01500351AC4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4248014020ECD24E0051AF46 /* ClickedOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickedOffer.swift; sourceTree = "<group>"; };
 		424953CF20A3188300396E8D /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		426F0F7020B16E3C0088E70A /* DMT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DMT-Bridging-Header.h"; path = "UIUltraCalendar/DMT-Bridging-Header.h"; sourceTree = "<group>"; };
 		426F0F7420B16F290088E70A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				42FC3002209491DB00037E08 /* UserRegister.swift */,
+				4248014020ECD24E0051AF46 /* ClickedOffer.swift */,
 				3C9E9CD820DBA5100084ECA9 /* OffersResult.swift */,
 			);
 			path = Model;
@@ -341,6 +344,7 @@
 				3C9E9CD920DBA5100084ECA9 /* OffersResult.swift in Sources */,
 				42FC30052094940700037E08 /* RegisterViewController.swift in Sources */,
 				5A5CEF79208F93290098B4E3 /* ServerRequestManager.swift in Sources */,
+				4248014120ECD24F0051AF46 /* ClickedOffer.swift in Sources */,
 				3C4DC77C20D3CF7B0049BD21 /* Services.swift in Sources */,
 				3C8A657C20B692E20099B204 /* UltraWeekCalendar.m in Sources */,
 				42FC3003209491DB00037E08 /* UserRegister.swift in Sources */,
