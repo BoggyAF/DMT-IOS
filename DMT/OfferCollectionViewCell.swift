@@ -11,10 +11,10 @@ import UIKit
 class OfferCollectionViewCell: UICollectionViewCell {
 
     
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var jobLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel? //if the user wants to be displayed
+//    @IBOutlet weak var priceLabel: UILabel!
+//    @IBOutlet weak var headerLabel: UILabel!
+//    @IBOutlet weak var jobLabel: UILabel!
+//    @IBOutlet weak var locationLabel: UILabel? //if the user wants to be displayed
     
     static let ReuseIdentifier = String(describing: OfferCollectionViewCell.self)
     static let NibName = String(describing: OfferCollectionViewCell.self)

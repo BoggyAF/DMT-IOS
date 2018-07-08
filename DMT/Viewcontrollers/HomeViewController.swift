@@ -26,32 +26,50 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return offerDetails.count // il gaseste ca nil
     }
-
+// DC NU MERGE ASA?
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = Bundle.main.loadNibNamed("OffersCollectionViewCell", owner: self, options: nil)?.first as! OffersCollectionViewCell
+//
+//        cell.headerLabel.text = self.offerDetails[indexPath.item].titluOferta
+//        cell.locationLabel?.text = self.offerDetails[indexPath.item].numeLocatie
+//        cell.priceLabel.text = self.offerDetails[indexPath.item].pretOferta
+//        cell.jobLabel.text = self.offerDetails[indexPath.item].specializare
+//
+//
+//        return cell
+//
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = Bundle.main.loadNibNamed("OfferCollectionViewCell", owner: self, options: nil)?.first as! OfferCollectionViewCell
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OffersCollectionViewCell.ReuseIdentifier, for: indexPath) as! OffersCollectionViewCell
+        
+        cell.load()
         cell.headerLabel.text = self.offerDetails[indexPath.item].titluOferta
         cell.locationLabel?.text = self.offerDetails[indexPath.item].numeLocatie
         cell.priceLabel.text = self.offerDetails[indexPath.item].pretOferta
         cell.jobLabel.text = self.offerDetails[indexPath.item].specializare
+        cell.locationLabel?.textColor = UIColor(red: 0.5, green: 0.44, blue: 0.87, alpha: 1)
+        cell.priceLabel.textColor = UIColor.white
+        cell.jobLabel.textColor = UIColor(red: 0.5, green: 0.44, blue: 0.87, alpha: 1)
+
         
-
+        
         return cell
-
+        
     }
+
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("celula selectata -  \(indexPath.item)!")
 
     }
 
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: UIScreen.main.bounds.width-15, height: 80)
-//
-//    }
-    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 80)
+
+    }
     
     
     var calendar : UltraWeekCalendar? = nil
@@ -69,14 +87,12 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         calendar?.selectedDate = Date()
         self.view.addSubview(calendar!)
         collectionView.backgroundView = noOffersView
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
         prepareCollectionView()
         
-        if offerNumber != nil {
-            self.noOffersLabel.text = ""
-        } else {
-            self.noOffersLabel.text = "No Offers"
-        }
+        
         
         // oferte aduse
         
@@ -133,10 +149,10 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
     
     func prepareCollectionView() {
         collectionView.dataSource = self
-        print("ViewController - \(OfferCollectionViewCell.ReuseIdentifier)")
+        print("ViewController - \(OffersCollectionViewCell.ReuseIdentifier)")
         
-        let nib = UINib(nibName: OfferCollectionViewCell.NibName, bundle: .main)
-        collectionView.register(nib, forCellWithReuseIdentifier: OfferCollectionViewCell.ReuseIdentifier)
+        let nib = UINib(nibName: OffersCollectionViewCell.NibName, bundle: .main)
+        collectionView.register(nib, forCellWithReuseIdentifier: OffersCollectionViewCell.ReuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,6 +163,12 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         
     }
     func dateButtonClicked() {
+        if offerNumber != nil {
+            self.noOffersLabel.text = ""
+        } else {
+            self.noOffersLabel.text = "No Offers"
+        }
+        print("dateClicked")
         DispatchQueue.main.async {
             		self.collectionView.reloadData()
         }
