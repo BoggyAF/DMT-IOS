@@ -37,12 +37,19 @@ class Services {
     
     }
     
-    static func getAllOffers(params: Parameters, completionHandler: @escaping
-        (FetchResult<OffersResult>) -> Void){
+    static func getAllOffers(params: Parameters, completionHandler: @escaping (FetchResult<OffersResult>) -> Void){
         ServerRequestManager.instance.postRequest(params: params as Parameters,
                                                   url: ServerRequestConstants.URLS.ALL_OFFERS_URL,
                                                   postCompleted: completionHandler)
 
+    }
+    
+    static func avatarChange(params: Parameters, completionHandler: @escaping (FetchResult<UserRegister>) -> Void){
+        
+        ServerRequestManager.instance.postRequest(params: params as Parameters,
+                                                  url: ServerRequestConstants.URLS.AVATAR_CHANGE_URL,
+                                                  postCompleted: completionHandler)
+        
     }
 
 }

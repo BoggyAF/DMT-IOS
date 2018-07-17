@@ -89,7 +89,8 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
         collectionView.backgroundView = noOffersView
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
+        let secondTab = self.tabBarController?.viewControllers![1] as! ProfileViewController
+        secondTab.userDetails = userDetails
         prepareCollectionView()
         
         

@@ -20,6 +20,7 @@ enum ServerRequestConstants {
         static let REGISTER_URL = "http://students.doubleuchat.com/register.php"
         static let FORGOT_PASSWORD_URL = "http://students.doubleuchat.com/forgotpw.php"
         static let ALL_OFFERS_URL = "http://students.doubleuchat.com/listoffers.php"
+        static let AVATAR_CHANGE_URL = "http://students.doubleuchat.com/avatarchange.php"
     }
     
     

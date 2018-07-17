@@ -196,10 +196,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationMana
 
         if let segueIdentifier = segue.identifier {
             if segueIdentifier == "toApp" {
+                
                 let barViewControllers = segue.destination as! UITabBarController
                 barViewControllers.viewControllers?.forEach{
                     if let vc = $0 as? HomeViewController {
                         vc.userDetails = userDetailsFromServer
+                        
+                        
                     }
                     
                 }
