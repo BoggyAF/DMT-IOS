@@ -15,9 +15,10 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
     @IBOutlet weak var noOffersLabel: UILabel!
     @IBOutlet var noOffersView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var  userDetails: UserDetails? // aceasta instanta este creata atunci cand se va face tranzitia din LoginVC in HomeVC
-    var  offerDetails: [OffersDetail] = []
-    var  offerNumber: Int?
+    var userDetails: UserDetails? // aceasta instanta este creata atunci cand se va face tranzitia din LoginVC in HomeVC
+    var clickedOfferDetailFromServer: ClickedOfferDetail?
+    var offerDetails: [OffersDetail] = []
+    var offerNumber: Int?
     let reuseIdentifier = "cell"
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
     
@@ -61,6 +62,52 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("celula selectata -  \(indexPath.item)!")
+        var params = Dictionary<String, String>()
+        params["request"] = "1"
+        params["id_user"] = userDetails?.idUser
+        params["id_oferta"] = self.offerDetails[indexPath.item].idOferta
+        Services.getOfferDetails(params: params) { [weak self] result in
+            switch result {
+            case .success(let json):
+                guard let responseFromJSON = json.response else {
+                    return
+                }
+                guard let messageFromJSON = json.msg else {
+                    return
+                }
+                guard let resultFromJSON = json.result else {
+                    return
+                }
+                
+                switch messageFromJSON {
+                case ServerRequestConstants.JSON.RESPONSE_ERROR :
+                    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                        DispatchQueue.main.async {
+                            AlertManager.showGenericDialog(responseFromJSON, viewController: self!)
+                            
+                        }
+                    }
+                case ServerRequestConstants.JSON.RESPONSE_SUCCESS:
+                    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                        DispatchQueue.main.async {
+                            self?.clickedOfferDetailFromServer = resultFromJSON
+                            self?.performSegue(withIdentifier: "showDetail", sender: nil)
+                        }
+                    }
+                default:
+                    break
+                }
+                
+                
+            case .error(let errorString):
+                print("errorString = \(errorString)")
+                
+                break
+                
+            }
+        }
+        
+    
 
     }
 
@@ -129,7 +176,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
                                 self?.offerNumber = resultFromJSON.count
                                 self?.offerDetails = resultFromJSON
                                 print(self?.offerDetails[1].numeLocatie as Any)
-                                AlertManager.showGenericDialog("Avem \(String(describing: self?.offerNumber)) oferte!", viewController: self!)
+
                                 
                             }
                         }
@@ -145,6 +192,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
                 
             }
         }
+        
       
     }
     
@@ -176,7 +224,25 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate, UICollect
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let segueIdentifier = segue.identifier {
+            if segueIdentifier == "showDetail" {
+               
+                let vc = segue.destination as! ClickedOfferDetailViewController
+                vc.clickedOfferDetailFromServer = clickedOfferDetailFromServer
+                        
+                        
+                
+                    
+                
     
+            }
+            
+        }
+        segue.destination.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+    }
 
    
 

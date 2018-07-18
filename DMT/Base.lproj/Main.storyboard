@@ -834,6 +834,7 @@
                         <outlet property="collectionView" destination="DkG-h3-lfn" id="Y4b-P6-g0h"/>
                         <outlet property="noOffersLabel" destination="E2h-6A-pOD" id="6qg-kh-NDX"/>
                         <outlet property="noOffersView" destination="43E-IZ-f7T" id="iQZ-KY-hAA"/>
+                        <segue destination="yV8-PQ-PZa" kind="showDetail" identifier="showDetail" id="X71-JQ-p0E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzQ-XW-4hX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -863,12 +864,12 @@
                     <viewLayoutGuide key="safeArea" id="SmV-VJ-BW1"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2084" y="-790.25487256371821"/>
+            <point key="canvasLocation" x="2121" y="-790"/>
         </scene>
         <!--OfferDetailsViewController-->
         <scene sceneID="2Mb-AX-U3O">
             <objects>
-                <viewController id="yV8-PQ-PZa" userLabel="OfferDetailsViewController" sceneMemberID="viewController">
+                <viewController id="yV8-PQ-PZa" userLabel="OfferDetailsViewController" customClass="ClickedOfferDetailViewController" customModule="DMT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DMA-LU-hEn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1075,6 +1076,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qkw-Ez-K7j"/>
                     </view>
+                    <connections>
+                        <outlet property="offerDescriptionLabel" destination="MbQ-33-nyo" id="36j-UU-ylk"/>
+                        <outlet property="offerLocationLabel" destination="D8p-H0-xqq" id="bzC-Bv-tyk"/>
+                        <outlet property="offerTitleLabel" destination="bRM-78-GW8" id="BRM-IZ-ARE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UDQ-ZJ-Gy3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
