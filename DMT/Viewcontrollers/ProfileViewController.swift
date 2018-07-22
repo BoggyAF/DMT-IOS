@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(userDetails?.avatar)
+        print(userDetails?.avatar as Any)
         if userDetails?.avatar != "" {		
             let avatar = userDetails?.avatar?.fromBase64()
             profileImageView.image = avatar

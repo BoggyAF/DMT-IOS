@@ -30,6 +30,7 @@
 		5A5CEF77208F92CD0098B4E3 /* ServerRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */; };
 		5A5CEF79208F93290098B4E3 /* ServerRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEF78208F93290098B4E3 /* ServerRequestManager.swift */; };
 		5A5CEF7B208F93330098B4E3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEF7A208F93330098B4E3 /* AlertManager.swift */; };
+		5AA096C92104FD7000C1F6D4 /* OfferDtailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA096C82104FD7000C1F6D4 /* OfferDtailsViewController.swift */; };
 		94A1209B20FF992700B3C895 /* ClickedOfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1209A20FF992700B3C895 /* ClickedOfferDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequestHelper.swift; sourceTree = "<group>"; };
 		5A5CEF78208F93290098B4E3 /* ServerRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequestManager.swift; sourceTree = "<group>"; };
 		5A5CEF7A208F93330098B4E3 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		5AA096C82104FD7000C1F6D4 /* OfferDtailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDtailsViewController.swift; sourceTree = "<group>"; };
 		94A1209A20FF992700B3C895 /* ClickedOfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickedOfferDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 				94A1209A20FF992700B3C895 /* ClickedOfferDetailViewController.swift */,
 				42FC30042094940700037E08 /* RegisterViewController.swift */,
 				423C035B20D8E01500351AC4 /* ProfileViewController.swift */,
+				5AA096C82104FD7000C1F6D4 /* OfferDtailsViewController.swift */,
 			);
 			path = Viewcontrollers;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				424953D020A3188300396E8D /* Toast.swift in Sources */,
 				3C9E9CD920DBA5100084ECA9 /* OffersResult.swift in Sources */,
 				42FC30052094940700037E08 /* RegisterViewController.swift in Sources */,
+				5AA096C92104FD7000C1F6D4 /* OfferDtailsViewController.swift in Sources */,
 				5A5CEF79208F93290098B4E3 /* ServerRequestManager.swift in Sources */,
 				4248014120ECD24F0051AF46 /* ClickedOffer.swift in Sources */,
 				3C4DC77C20D3CF7B0049BD21 /* Services.swift in Sources */,
@@ -529,11 +533,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47LJ6N2BQN;
+				DEVELOPMENT_TEAM = 4857534772;
 				INFOPLIST_FILE = DMT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = App.DMTfytf;
+				PRODUCT_BUNDLE_IDENTIFIER = App.DMTfytfs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DMT/UIUltraCalendar/DMT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -548,11 +552,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47LJ6N2BQN;
+				DEVELOPMENT_TEAM = 4857534772;
 				INFOPLIST_FILE = DMT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = App.DMTfytf;
+				PRODUCT_BUNDLE_IDENTIFIER = App.DMTfytfs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DMT/UIUltraCalendar/DMT-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
