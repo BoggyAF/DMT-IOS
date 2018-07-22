@@ -21,6 +21,7 @@ enum ServerRequestConstants {
         static let FORGOT_PASSWORD_URL = "http://students.doubleuchat.com/forgotpw.php"
         static let ALL_OFFERS_URL = "http://students.doubleuchat.com/listoffers.php"
         static let AVATAR_CHANGE_URL = "http://students.doubleuchat.com/avatarchange.php"
+        static let CLICKED_OFFER_URL = "http://students.doubleuchat.com/listofferdetails.php"
     }
     
     
@@ -93,55 +94,6 @@ class ServerRequestManager: NSObject {
         task.resume()
     }
     
-    func forgotPostRequest(params : Parameters,  url : String, postCompleted: @escaping (_ response: String, _ msg: String, _ json: NSDictionary?) -> ()) {
-        
-        let paramsStr = createStringFromDictionary(dict: params)
-        let paramsLength = "\(paramsStr.count)"
-        let requestBodyData = (paramsStr as NSString).data(using: String.Encoding.utf8.rawValue)
-        let request = NSMutableURLRequest(url: NSURL(string: url)! as URL)
-        let session = URLSession.shared
-        
-        request.httpMethod = "POST"
-        request.allowsCellularAccess = true
-        request.httpBody = requestBodyData;
-        
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.addValue(paramsLength, forHTTPHeaderField: "Content-Length")
-        
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response , error -> Void in
-            
-            let json: NSDictionary?
-            do {
-                if(data != nil) {
-                    print("data != nil")
-                    json = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? NSDictionary
-                    
-                } else {
-                    print("data == nil")
-                    postCompleted(ServerRequestConstants.JSON.RESPONSE_ERROR, "An error has occured. Please try again later.", nil)
-                    json = nil
-                    return
-                }
-                
-            } catch let error as NSError {
-                print(error.localizedDescription)
-                json = nil
-            }
-            
-            guard let msgValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_MESSAGE) as! String? else{
-                return
-            }
-            print(msgValue)
-            guard let responseValue = json?.value(forKey: ServerRequestConstants.JSON.TAG_RESPONSE) as! String? else{
-                return
-            }
-            print(responseValue)
-            postCompleted(msgValue,responseValue,json)
-            
-        })
-        task.resume()}
     
     private func createStringFromDictionary(dict: Parameters) -> String {
         var params = String()

@@ -51,5 +51,13 @@ class Services {
                                                   postCompleted: completionHandler)
         
     }
+    
+    static func getOfferDetails(params: Parameters, completionHandler: @escaping (FetchResult<ClickedOfferResult>) -> Void){
+        
+        ServerRequestManager.instance.postRequest(params: params as Parameters,
+                                                  url: ServerRequestConstants.URLS.CLICKED_OFFER_URL,
+                                                  postCompleted: completionHandler)
+        
+    }
 
 }
