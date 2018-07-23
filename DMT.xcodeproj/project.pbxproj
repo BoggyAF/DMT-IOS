@@ -25,6 +25,10 @@
 		5A2ADD73204BF2BF00602D83 /* DMTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2ADD72204BF2BF00602D83 /* DMTTests.swift */; };
 		5A2ADD7E204BF2BF00602D83 /* DMTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2ADD7D204BF2BF00602D83 /* DMTUITests.swift */; };
 		5A2ADD8E204BFBCE00602D83 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2ADD8D204BFBCE00602D83 /* Constants.swift */; };
+		5A49E3772105EDFA002DD350 /* OfferDetailsTableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A49E3752105EDFA002DD350 /* OfferDetailsTableViewCell1.swift */; };
+		5A49E3782105EDFA002DD350 /* OfferDetailsTableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A49E3762105EDFA002DD350 /* OfferDetailsTableViewCell1.xib */; };
+		5A49E37D2105F082002DD350 /* OfferDetailsTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A49E37B2105F082002DD350 /* OfferDetailsTableViewCell2.swift */; };
+		5A49E37E2105F082002DD350 /* OfferDetailsTableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A49E37C2105F082002DD350 /* OfferDetailsTableViewCell2.xib */; };
 		5A55FE5520F25C8F0036C724 /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55FE5320F25C8F0036C724 /* OffersCollectionViewCell.swift */; };
 		5A55FE5620F25C8F0036C724 /* OffersCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A55FE5420F25C8F0036C724 /* OffersCollectionViewCell.xib */; };
 		5A5CEF77208F92CD0098B4E3 /* ServerRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */; };
@@ -78,6 +82,10 @@
 		5A2ADD7D204BF2BF00602D83 /* DMTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTUITests.swift; sourceTree = "<group>"; };
 		5A2ADD7F204BF2BF00602D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A2ADD8D204BFBCE00602D83 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5A49E3752105EDFA002DD350 /* OfferDetailsTableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell1.swift; sourceTree = "<group>"; };
+		5A49E3762105EDFA002DD350 /* OfferDetailsTableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferDetailsTableViewCell1.xib; sourceTree = "<group>"; };
+		5A49E37B2105F082002DD350 /* OfferDetailsTableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell2.swift; sourceTree = "<group>"; };
+		5A49E37C2105F082002DD350 /* OfferDetailsTableViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferDetailsTableViewCell2.xib; sourceTree = "<group>"; };
 		5A55FE5320F25C8F0036C724 /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A55FE5420F25C8F0036C724 /* OffersCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OffersCollectionViewCell.xib; sourceTree = "<group>"; };
 		5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRequestHelper.swift; sourceTree = "<group>"; };
@@ -148,6 +156,8 @@
 				3C360D0220D2BB95002A90A0 /* Model */,
 				5AC573C820D2921100BE5878 /* Managers + Helpers */,
 				5AC573C720D291CF00BE5878 /* Viewcontrollers */,
+				5A49E3792105EE07002DD350 /* Cells */,
+				5A49E37A2105EE2C002DD350 /* Xib */,
 				3C8A657A20B692B10099B204 /* UltraWeekCalendar.h */,
 				3C8A657B20B692E20099B204 /* UltraWeekCalendar.m */,
 				426F0F7020B16E3C0088E70A /* DMT-Bridging-Header.h */,
@@ -156,8 +166,6 @@
 				5A5CEF76208F92CD0098B4E3 /* ServerRequestHelper.swift */,
 				5A2ADD5D204BF2BF00602D83 /* AppDelegate.swift */,
 				5A2ADD61204BF2BF00602D83 /* Main.storyboard */,
-				5A55FE5320F25C8F0036C724 /* OffersCollectionViewCell.swift */,
-				5A55FE5420F25C8F0036C724 /* OffersCollectionViewCell.xib */,
 				5A2ADD64204BF2BF00602D83 /* Assets.xcassets */,
 				5A2ADD66204BF2BF00602D83 /* LaunchScreen.storyboard */,
 				5A2ADD69204BF2BF00602D83 /* Info.plist */,
@@ -181,6 +189,26 @@
 				5A2ADD7F204BF2BF00602D83 /* Info.plist */,
 			);
 			path = DMTUITests;
+			sourceTree = "<group>";
+		};
+		5A49E3792105EE07002DD350 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5A49E3752105EDFA002DD350 /* OfferDetailsTableViewCell1.swift */,
+				5A49E37B2105F082002DD350 /* OfferDetailsTableViewCell2.swift */,
+				5A55FE5320F25C8F0036C724 /* OffersCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5A49E37A2105EE2C002DD350 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				5A49E3762105EDFA002DD350 /* OfferDetailsTableViewCell1.xib */,
+				5A49E37C2105F082002DD350 /* OfferDetailsTableViewCell2.xib */,
+				5A55FE5420F25C8F0036C724 /* OffersCollectionViewCell.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 		5AC573C720D291CF00BE5878 /* Viewcontrollers */ = {
@@ -315,9 +343,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A49E37E2105F082002DD350 /* OfferDetailsTableViewCell2.xib in Resources */,
 				5A2ADD68204BF2BF00602D83 /* LaunchScreen.storyboard in Resources */,
 				5A55FE5620F25C8F0036C724 /* OffersCollectionViewCell.xib in Resources */,
 				5A2ADD65204BF2BF00602D83 /* Assets.xcassets in Resources */,
+				5A49E3782105EDFA002DD350 /* OfferDetailsTableViewCell1.xib in Resources */,
 				5A2ADD63204BF2BF00602D83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,8 +373,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A49E37D2105F082002DD350 /* OfferDetailsTableViewCell2.swift in Sources */,
 				424953D020A3188300396E8D /* Toast.swift in Sources */,
 				3C9E9CD920DBA5100084ECA9 /* OffersResult.swift in Sources */,
+				5A49E3772105EDFA002DD350 /* OfferDetailsTableViewCell1.swift in Sources */,
 				42FC30052094940700037E08 /* RegisterViewController.swift in Sources */,
 				5AA096C92104FD7000C1F6D4 /* OfferDtailsViewController.swift in Sources */,
 				5A5CEF79208F93290098B4E3 /* ServerRequestManager.swift in Sources */,

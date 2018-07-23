@@ -20,7 +20,7 @@ class ClickedOfferDetailViewController: UIViewController {
         self.offerTitleLabel.text = clickedOfferDetailFromServer?.titluOferta
         self.offerDescriptionLabel.text = clickedOfferDetailFromServer?.descriereOferta
         self.offerLocationLabel.text = clickedOfferDetailFromServer?.numeLocatie
-        print("clickedOfferDetailFromServer - \(clickedOfferDetailFromServer)")
+        print("clickedOfferDetailFromServer - \(String(describing: clickedOfferDetailFromServer))")
        
     }
 
