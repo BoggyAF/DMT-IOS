@@ -54,7 +54,9 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         let someDateTime = formatter.date(from: "2018/10/08")
+        
         calendar?.delegate = self
+        
         calendar?.startDate = Date()
         calendar?.endDate = someDateTime
         calendar?.selectedDate = Date()
@@ -116,7 +118,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
                             self?.offerNumber = resultFromJSON.count
                             self?.offerDetails = resultFromJSON
                             print(self?.offerDetails[1].numeLocatie as Any)
-                            
+                            self?.collectionView.reloadData()
                             
                         }
                     }
