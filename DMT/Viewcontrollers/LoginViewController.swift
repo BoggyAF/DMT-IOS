@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreLocation
-class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class LoginViewController: UIViewController {
     
     
     @IBOutlet weak var userScrollView: UIScrollView!
@@ -43,11 +43,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationMana
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: false)
         let showKeyboard: (Notification) -> Void = { notification in
-            self.KeyboardWillShow(notification)
+            self.keyboardWillShow(notification)
         }
         
         let hideKeyboard: (Notification) -> Void = { notification in
-            self.KeyboardWillHide(notification)
+            self.keyboardWillHide(notification)
         }
         
         NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow,
@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationMana
         view.endEditing(true)
     }
     
-    func KeyboardWillShow(_ notification: Notification) {
+    func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
             let frame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
                 
@@ -82,26 +82,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationMana
         userScrollView.scrollIndicatorInsets = contentInset
     }
     
-    func KeyboardWillHide(_ notification: Notification) {
+    func keyboardWillHide(_ notification: Notification) {
         userScrollView.contentInset = UIEdgeInsets.zero
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailField.isFirstResponder{
-            textField.resignFirstResponder()
-            passwordField.becomeFirstResponder()
-            return true
-        }
-        
-        textField.resignFirstResponder()
-        return true
-    }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        locationManager.stopMonitoringSignificantLocationChanges()
-        locationManager.stopUpdatingLocation()
-    }
+
     @IBAction func rememberSwitchPressed(sender: UISwitch){
         print("S-a salvat un nou switchState")
         UserDefaults.standard.set(sender.isOn, forKey: UserDefaultsKeys.rememberSwitchState)
@@ -115,6 +100,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationMana
             print("Am salvat in user defaults")
         }
     }
+    
     @IBAction func loginButton(_ sender: UIButton) {
         self.loginButton.isEnabled = false
         if (emailField.text?.isEmpty)! || passwordField.text?.isEmpty == true{
@@ -193,7 +179,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationMana
         
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if let segueIdentifier = segue.identifier {
@@ -227,8 +212,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CLLocationMana
     
 }
 
+extension LoginViewController : CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        locationManager.stopMonitoringSignificantLocationChanges()
+        locationManager.stopUpdatingLocation()
+    }
+}
 
 
+extension LoginViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if emailField.isFirstResponder{
+            textField.resignFirstResponder()
+            passwordField.becomeFirstResponder()
+            return true
+        }
+        
+        textField.resignFirstResponder()
+        return true
+    }
+}
 
 
 
