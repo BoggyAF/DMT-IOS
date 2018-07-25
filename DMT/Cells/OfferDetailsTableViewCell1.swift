@@ -7,9 +7,14 @@
 //
 
 import UIKit
+protocol OffersTableViewCellProtocol {
+    
+}
 
-class OfferDetailsTableViewCell1: UITableViewCell {
+class OfferDetailsTableViewCell1: UITableViewCell, OffersTableViewCellProtocol {
 
+    static let ReuseIdentifier = String(describing: OfferDetailsTableViewCell1.self)
+    static let NibName = String(describing: OfferDetailsTableViewCell1.self)
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

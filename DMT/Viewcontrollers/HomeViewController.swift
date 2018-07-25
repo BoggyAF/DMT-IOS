@@ -118,6 +118,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
                             self?.offerNumber = resultFromJSON.count
                             self?.offerDetails = resultFromJSON
                             print(self?.offerDetails[1].numeLocatie as Any)
+                            
                             self?.collectionView.reloadData()
                             
                         }
@@ -158,7 +159,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
         if let segueIdentifier = segue.identifier {
             if segueIdentifier == "showDetail" {
                 
-                let vc = segue.destination as! ClickedOfferDetailViewController
+                let vc = segue.destination as! OfferDtailsViewController
                 vc.clickedOfferDetailFromServer = clickedOfferDetailFromServer
                 
                 
@@ -213,13 +214,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("celula selectata -  \(indexPath.item)!")
-        var params = Dictionary<String, String>()
+        
+        var params = Parameters()
+        
         params["request"] = "1"
         params["id_user"] = userDetails?.idUser
         params["id_oferta"] = self.offerDetails[indexPath.item].idOferta
+        
         Services.getOfferDetails(params: params) { [weak self] result in
             switch result {
             case .success(let json):
+                
                 guard let responseFromJSON = json.response else {
                     return
                 }

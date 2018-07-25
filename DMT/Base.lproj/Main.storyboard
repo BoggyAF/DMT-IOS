@@ -834,6 +834,7 @@
                         <outlet property="collectionView" destination="DkG-h3-lfn" id="Y4b-P6-g0h"/>
                         <outlet property="noOffersLabel" destination="E2h-6A-pOD" id="6qg-kh-NDX"/>
                         <outlet property="noOffersView" destination="43E-IZ-f7T" id="iQZ-KY-hAA"/>
+                        <segue destination="NfG-Gk-Y2V" kind="showDetail" identifier="showDetail" id="UDY-pF-CrK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzQ-XW-4hX" userLabel="First Responder" sceneMemberID="firstResponder"/>

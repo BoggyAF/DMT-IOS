@@ -8,9 +8,10 @@
 
 import UIKit
 
+
+
 class OffersCollectionViewCell: UICollectionViewCell {
-    
-    
+
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var jobLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
