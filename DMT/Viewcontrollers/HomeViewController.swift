@@ -59,6 +59,19 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
         calendar?.endDate = someDateTime
         calendar?.selectedDate = Date()
         self.view.addSubview(calendar!)
+        
+        // customizare calendar:
+
+        calendar?.backgroundColor = UIColor(rgb:0xCCCCCC)
+        calendar?.monthTextColor = UIColor(rgb:0xFFFFFF)
+        calendar?.monthBGColor = UIColor(rgb:0x7baecb)
+        calendar?.dayNameTextColor = UIColor(rgb:0x626262)
+        calendar?.dayNumberTextColor = UIColor(rgb:0x232323)
+        calendar?.dayScrollBGColor = UIColor(rgb:0xFFFFFF)
+        calendar?.dayNameSelectedTextColor = UIColor(rgb:0xFFFFFF)
+        calendar?.dayNumberSelectedTextColor = UIColor(rgb:0xFFFFFF)
+        calendar?.daySelectedBGColor = UIColor(rgb:0x7baecb)
+        
     }
     
     func prepareCollectionView() {
@@ -136,6 +149,8 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
     }
     
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let segueIdentifier = segue.identifier {
@@ -152,8 +167,8 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
         
     }
     
-    
 }
+
 extension UIViewController{
     class func displaySpinner(onView: UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
@@ -252,5 +267,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return offerDetails.count // il gaseste ca nil
+    }
+}
+
+extension UIColor {
+    convenience init(rgb: UInt) {
+        self.init(
+            red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgb & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgb & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
