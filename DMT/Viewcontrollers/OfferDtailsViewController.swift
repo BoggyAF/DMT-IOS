@@ -24,11 +24,25 @@ class OfferDtailsViewController: UIViewController {
     var imageArray = [UIImage]()
     var cellDataArray = [cellData]()
     var  clickedOfferDetailFromServer: ClickedOfferDetail?
+    var refreshControl: UIRefreshControl!
     
+    @objc func addNewCell() {
+        for _ in 1...100 {
+            cellDataArray.append(cellData(cell: OfferDetailsTableViewCell1.ReuseIdentifier, text: "da"))
+        }
+        refreshControl.endRefreshing()
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Trage pentru refresh!!!")
+        refreshControl.addTarget(self,
+                                 action: #selector(addNewCell),
+                                 for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl)
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
