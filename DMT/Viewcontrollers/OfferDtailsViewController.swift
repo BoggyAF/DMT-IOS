@@ -11,7 +11,7 @@ import UIKit
 import UIKit
 
 struct cellData {
-    let cell: Int!
+    let cell: String!
     let text: String!
 }
 
@@ -40,9 +40,10 @@ class OfferDtailsViewController: UIViewController {
             print("Alerta - date neconcludente!")
             return
         }
+        print("clickedOfferDetails - \(clickedOfferDetails)")
         
-        cellDataArray = [cellData(cell: 1, text: "da"),
-                         cellData(cell: 2, text: "nu")]
+        cellDataArray = [cellData(cell: OfferDetailsTableViewCell1.ReuseIdentifier, text: "da"),
+                         cellData(cell: OfferDetailsTableViewCell2.ReuseIdentifier, text: "nu")]
         
 
         // xib register
@@ -56,7 +57,9 @@ class OfferDtailsViewController: UIViewController {
 
     func createImageArray() {
         
-        imageArray = [UIImage(imageLiteralResourceName: "Bufnita"), UIImage(imageLiteralResourceName: "Caine"), UIImage(imageLiteralResourceName: "Vulpe")]
+        imageArray = [UIImage(imageLiteralResourceName: "Bufnita"),
+                      UIImage(imageLiteralResourceName: "Caine"),
+                      UIImage(imageLiteralResourceName: "Vulpe")]
         imageScrollView.delegate = self
         imageSlider.numberOfPages = imageArray.count
         imageSlider.currentPage = 0
@@ -86,57 +89,32 @@ extension OfferDtailsViewController: UITableViewDelegate, UITableViewDataSource 
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var cell:OffersTableViewCellProtocol? = nil
+        
+        var cell:OffersTableViewCellProtocol? = nil
         
         switch cellDataArray[indexPath.row].cell {
-        case 1:
-            let  cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell1.ReuseIdentifier) as! OfferDetailsTableViewCell1
-            cell.headerLabel.text = cellDataArray[indexPath.row].text
-            cell.dateLabel.text = "BUBU"
-            cell.priceLabel.text = "10 RON"
-            return cell
+        case OfferDetailsTableViewCell1.ReuseIdentifier:
+                cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell1.ReuseIdentifier) as? OffersTableViewCellProtocol
+                cell?.config(withData: cellDataArray[indexPath.row])
             
-        case 2:
-             let cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell2.ReuseIdentifier) as! OfferDetailsTableViewCell2
-            cell.descriptionLabel.text = cellDataArray[indexPath.row].text
-             return cell
+        case OfferDetailsTableViewCell2.ReuseIdentifier:
+                cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell2.ReuseIdentifier) as? OffersTableViewCellProtocol
+                cell?.config(withData: cellDataArray[indexPath.row])
 
         default:
-             let cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell1.ReuseIdentifier) as! OfferDetailsTableViewCell1
-             cell.headerLabel.text = cellDataArray[indexPath.row].text
-             cell.dateLabel.text = "BUBU"
-             cell.priceLabel.text = "10 RON"
-            return cell
+            cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell1.ReuseIdentifier) as? OffersTableViewCellProtocol
+                cell?.config(withData: cellDataArray[indexPath.row])
         }
         
-//        if cellDataArray[indexPath.row].cell == 1 {
-////            let cell = Bundle.main.loadNibNamed("OfferDetailsTableViewCell1", owner: self, options: nil)?.first as! OfferDetailsTableViewCell1
-//            let cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell1.ReuseIdentifier) as! OfferDetailsTableViewCell1
-//
-//            cell.headerLabel.text = cellDataArray[indexPath.row].text
-//
-//            return cell
-//        }
-//        else if cellDataArray[indexPath.row].cell == 2 {
-//            let cell = Bundle.main.loadNibNamed("OfferDetailsTableViewCell2", owner: self, options: nil)?.first as! OfferDetailsTableViewCell2
-//            cell.descriptionLabel.text = cellDataArray[indexPath.row].text
-//
-//            return cell
-//        }
-//        else {
-//            let cell = Bundle.main.loadNibNamed("OfferDetailsTableViewCell1", owner: self, options: nil)?.first as! OfferDetailsTableViewCell1
-//            cell.headerLabel.text = cellDataArray[indexPath.row].text
-//
-//            return cell
-//        }
-//        return cell
+        return cell as! UITableViewCell
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if cellDataArray[indexPath.row].cell == 1 {
+        if cellDataArray[indexPath.row].cell == OfferDetailsTableViewCell1.ReuseIdentifier {
             return 128
         }
-        else if cellDataArray[indexPath.row].cell == 2 {
+        else if cellDataArray[indexPath.row].cell == OfferDetailsTableViewCell2.ReuseIdentifier {
             return 180
         }
         else {
