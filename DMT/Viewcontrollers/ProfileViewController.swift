@@ -9,6 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate {
+    @IBOutlet weak var segmentedReviews: UISegmentedControl!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
@@ -16,6 +17,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        segmentedReviews.layer.shadowColor = UIColor.black.cgColor
+        segmentedReviews.layer.shadowOffset = CGSize(width: 0, height: 4)
+        segmentedReviews.layer.shadowRadius = 4
+        segmentedReviews.layer.shadowOpacity = 0.25
+        
         print(userDetails?.avatar as Any)
         if userDetails?.avatar != "" {		
             let avatar = userDetails?.avatar?.fromBase64()

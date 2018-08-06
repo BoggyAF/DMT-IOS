@@ -74,6 +74,7 @@ class OfferDtailsViewController: UIViewController {
         imageSlider.currentPage = 0
         imageScrollView.contentSize.width = imageScrollView.frame.width * CGFloat(imageArray.count)
         imageScrollView.isPagingEnabled = true
+        imageScrollView.contentMode = .scaleAspectFit
         
         for i in 0..<imageArray.count{
             
