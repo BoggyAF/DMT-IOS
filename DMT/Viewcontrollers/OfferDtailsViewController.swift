@@ -26,7 +26,7 @@ class OfferDtailsViewController: UIViewController {
     var  clickedOfferDetailFromServer: ClickedOfferDetail?
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad() {	
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
@@ -41,8 +41,8 @@ class OfferDtailsViewController: UIViewController {
             return
         }
         
-        cellDataArray = [cellData(cell: 1, text: "da"),
-                         cellData(cell: 2, text: "nu")]
+        cellDataArray = [cellData(cell: 1, text: clickedOfferDetailFromServer?.titluOferta),
+                         cellData(cell: 2, text: clickedOfferDetailFromServer?.descriereOferta)]
         
 
         // xib register
@@ -55,8 +55,20 @@ class OfferDtailsViewController: UIViewController {
     }
 
     func createImageArray() {
-        
-        imageArray = [UIImage(imageLiteralResourceName: "Bufnita"), UIImage(imageLiteralResourceName: "Caine"), UIImage(imageLiteralResourceName: "Vulpe")]
+        if clickedOfferDetailFromServer?.imagineOferta1 != nil{
+           
+            let image = clickedOfferDetailFromServer?.imagineOferta1?.fromBase64()
+            imageArray.append(image!)
+        }
+        if clickedOfferDetailFromServer?.imagineOferta2 != nil{
+            let image = clickedOfferDetailFromServer?.imagineOferta2?.fromBase64()
+            imageArray.append(image!)
+        }
+        if clickedOfferDetailFromServer?.imagineOferta3 != nil{
+            let image = clickedOfferDetailFromServer?.imagineOferta3?.fromBase64()
+            imageArray.append(image!)
+        }
+//        imageArray = [UIImage(imageLiteralResourceName: "Bufnita"), UIImage(imageLiteralResourceName: "Caine"), UIImage(imageLiteralResourceName: "Vulpe")]
         imageScrollView.delegate = self
         imageSlider.numberOfPages = imageArray.count
         imageSlider.currentPage = 0
@@ -92,8 +104,8 @@ extension OfferDtailsViewController: UITableViewDelegate, UITableViewDataSource 
         case 1:
             let  cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell1.ReuseIdentifier) as! OfferDetailsTableViewCell1
             cell.headerLabel.text = cellDataArray[indexPath.row].text
-            cell.dateLabel.text = "BUBU"
-            cell.priceLabel.text = "10 RON"
+            cell.dateLabel.text = clickedOfferDetailFromServer?.numeAngajator
+            cell.priceLabel.text = clickedOfferDetailFromServer?.pretOferta
             return cell
             
         case 2:
@@ -104,8 +116,8 @@ extension OfferDtailsViewController: UITableViewDelegate, UITableViewDataSource 
         default:
              let cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell1.ReuseIdentifier) as! OfferDetailsTableViewCell1
              cell.headerLabel.text = cellDataArray[indexPath.row].text
-             cell.dateLabel.text = "BUBU"
-             cell.priceLabel.text = "10 RON"
+             cell.dateLabel.text = clickedOfferDetailFromServer?.numeAngajator
+             cell.priceLabel.text = clickedOfferDetailFromServer?.pretOferta
             return cell
         }
         
@@ -152,5 +164,13 @@ extension OfferDtailsViewController: UIScrollViewDelegate {
         imageSlider.currentPage = Int(pageIndex)
     }
     
+}
+
+extension String{
+    func fromBase64() -> UIImage{
+        let dataDecoded  = NSData(base64Encoded: self, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
+        let image = UIImage(data: dataDecoded as Data)
+        return image!
+    }
 }
 

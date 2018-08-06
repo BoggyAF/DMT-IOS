@@ -42,16 +42,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     
 }
 
-extension String{
-    func fromBase64() -> UIImage{
-        let dataDecoded  = NSData(base64Encoded: self, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
-        let image = UIImage(data: dataDecoded as Data)
-        return image!
-    }
-}
-
-
-
 extension ProfileViewController: UIImagePickerControllerDelegate {
     @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
