@@ -36,11 +36,11 @@ class OfferDtailsViewController: UIViewController {
         createImageArray()
         
         
-        guard let clickedOfferDetails = clickedOfferDetailFromServer else {
-            print("Alerta - date neconcludente!")
-            return
-        }
-        print("clickedOfferDetails - \(clickedOfferDetails)")
+//        guard let clickedOfferDetails = clickedOfferDetailFromServer else {
+//            print("Alerta - date neconcludente!")
+//            return
+//        }
+//        print("clickedOfferDetails - \(clickedOfferDetails)")
         
         cellDataArray = [cellData(cell: OfferDetailsTableViewCell1.ReuseIdentifier, text: "da"),
                          cellData(cell: OfferDetailsTableViewCell2.ReuseIdentifier, text: "nu")]
