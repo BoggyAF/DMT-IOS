@@ -35,11 +35,12 @@ class OfferDtailsViewController: UIViewController {
         
         createImageArray()
         
+// 07.08.2018
         
-        guard let clickedOfferDetails = clickedOfferDetailFromServer else {
-            print("Alerta - date neconcludente!")
-            return
-        }
+//        guard let clickedOfferDetails = clickedOfferDetailFromServer else {
+//            print("Alerta - date neconcludente!")
+//            return
+//        }
         
         cellDataArray = [cellData(cell: 1, text: clickedOfferDetailFromServer?.titluOferta),
                          cellData(cell: 2, text: clickedOfferDetailFromServer?.descriereOferta)]
