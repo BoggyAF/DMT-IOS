@@ -35,7 +35,7 @@ class OfferDtailsViewController: UIViewController {
         
         createImageArray()
         
-// 07.08.2018
+        // 07.08.2018 - ora 09:16
         
 //        guard let clickedOfferDetails = clickedOfferDetailFromServer else {
 //            print("Alerta - date neconcludente!")
