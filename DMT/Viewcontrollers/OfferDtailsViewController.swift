@@ -26,7 +26,7 @@ class OfferDtailsViewController: UIViewController {
     var  clickedOfferDetailFromServer: ClickedOfferDetail?
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad() {	
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
@@ -35,6 +35,7 @@ class OfferDtailsViewController: UIViewController {
         
         createImageArray()
         
+// 07.08.2018
         
 //        guard let clickedOfferDetails = clickedOfferDetailFromServer else {
 //            print("Alerta - date neconcludente!")
@@ -65,6 +66,7 @@ class OfferDtailsViewController: UIViewController {
         imageSlider.currentPage = 0
         imageScrollView.contentSize.width = imageScrollView.frame.width * CGFloat(imageArray.count)
         imageScrollView.isPagingEnabled = true
+        imageScrollView.contentMode = .scaleAspectFit
         
         for i in 0..<imageArray.count{
             
@@ -130,5 +132,13 @@ extension OfferDtailsViewController: UIScrollViewDelegate {
         imageSlider.currentPage = Int(pageIndex)
     }
     
+}
+
+extension String{
+    func fromBase64() -> UIImage{
+        let dataDecoded  = NSData(base64Encoded: self, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
+        let image = UIImage(data: dataDecoded as Data)
+        return image!
+    }
 }
 

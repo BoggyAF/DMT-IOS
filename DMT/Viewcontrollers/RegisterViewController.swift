@@ -17,7 +17,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var phoneField: UITextField!
     
     @IBOutlet weak var profileImageView: UIImageView!
-    
+    var clickedOfferDetailFromServer: ClickedOfferDetail?
     override func viewDidLoad() {
         super.viewDidLoad()
         
