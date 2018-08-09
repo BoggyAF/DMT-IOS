@@ -66,7 +66,7 @@ class OfferDtailsViewController: UIViewController {
         }
         if clickedOfferDetailFromServer?.imagineOferta3 != nil{
             let image = clickedOfferDetailFromServer?.imagineOferta3?.fromBase64()
-            imageArray.append(image!)
+            imageArray.append(image!)		
         }
 //        imageArray = [UIImage(imageLiteralResourceName: "Bufnita"), UIImage(imageLiteralResourceName: "Caine"), UIImage(imageLiteralResourceName: "Vulpe")]
         imageScrollView.delegate = self
