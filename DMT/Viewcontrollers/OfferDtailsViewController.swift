@@ -26,7 +26,7 @@ class OfferDtailsViewController: UIViewController {
     var  clickedOfferDetailFromServer: ClickedOfferDetail?
     
     
-    override func viewDidLoad() {	
+    override func viewDidLoad() {    
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
