@@ -16,7 +16,14 @@ struct UserDefaultsKeys {
     static let noPassword = ""
 }
 
-
+struct pushNotification{
+    static let gcmMessageIDKey = "gcm.message_id"
+    static let name = "name"
+    static let location = "location"
+    static let message = "google.c.a.c_l"
+    static let aps = "aps"
+    static let receivedNotification = Notification.Name(rawValue:"NotificationReceived")
+}
 
 
 struct Constraints{

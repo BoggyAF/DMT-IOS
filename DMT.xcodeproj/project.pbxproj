@@ -16,6 +16,7 @@
 		424953D020A3188300396E8D /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424953CF20A3188300396E8D /* Toast.swift */; };
 		426F0F7520B16F290088E70A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F0F7420B16F290088E70A /* HomeViewController.swift */; };
 		4272CA29211C71740023903B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4272CA28211C71730023903B /* GoogleService-Info.plist */; };
+		42F6260F211C872200633649 /* ReceivedPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F6260E211C872200633649 /* ReceivedPushNotification.swift */; };
 		42F74F9A20BC2D5E00DE8F07 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F74F9920BC2D5E00DE8F07 /* ForgotPasswordViewController.swift */; };
 		42FC3003209491DB00037E08 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC3002209491DB00037E08 /* UserRegister.swift */; };
 		42FC30052094940700037E08 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC30042094940700037E08 /* RegisterViewController.swift */; };
@@ -73,6 +74,7 @@
 		426F0F7020B16E3C0088E70A /* DMT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DMT-Bridging-Header.h"; path = "UIUltraCalendar/DMT-Bridging-Header.h"; sourceTree = "<group>"; };
 		426F0F7420B16F290088E70A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4272CA28211C71730023903B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		42F6260E211C872200633649 /* ReceivedPushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedPushNotification.swift; sourceTree = "<group>"; };
 		42F74F9920BC2D5E00DE8F07 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		42FC3002209491DB00037E08 /* UserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
 		42FC30042094940700037E08 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				42FC3002209491DB00037E08 /* UserRegister.swift */,
 				4248014020ECD24E0051AF46 /* ClickedOffer.swift */,
 				3C9E9CD820DBA5100084ECA9 /* OffersResult.swift */,
+				42F6260E211C872200633649 /* ReceivedPushNotification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				94A1209B20FF992700B3C895 /* ClickedOfferDetailViewController.swift in Sources */,
 				426F0F7520B16F290088E70A /* HomeViewController.swift in Sources */,
 				5A25E6AC21186AD000C5F24B /* OffersViewController.swift in Sources */,
+				42F6260F211C872200633649 /* ReceivedPushNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,11 +701,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4857534772;
+				DEVELOPMENT_TEAM = 9DP253YDLB;
 				INFOPLIST_FILE = DMT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = App.DMTfytfs;
+				PRODUCT_BUNDLE_IDENTIFIER = APP.DMT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DMT/UIUltraCalendar/DMT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -717,11 +721,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4857534772;
+				DEVELOPMENT_TEAM = 9DP253YDLB;
 				INFOPLIST_FILE = DMT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = App.DMTfytfs;
+				PRODUCT_BUNDLE_IDENTIFIER = APP.DMT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DMT/UIUltraCalendar/DMT-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

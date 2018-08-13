@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
     var offerDetails: [OffersDetail] = []
     var offerNumber: Int?
     let reuseIdentifier = "cell"
-
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
     var calendar : UltraWeekCalendar? = nil
     
     override func viewDidLoad() {
@@ -30,7 +30,8 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
         
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
+        let nc = NotificationCenter.default
+        nc.addObserver(self,selector: #selector(catchNotification),name: pushNotification.receivedNotification,object: nil)
         let secondTab = self.tabBarController?.viewControllers![1] as! ProfileViewController
         secondTab.userDetails = userDetails
         prepareCollectionView()
@@ -39,6 +40,10 @@ class HomeViewController: UIViewController, UltraWeekCalendarDelegate
         
         getAllOffersFromServer()
      
+    }
+    @objc func catchNotification() {
+        print("Catch notification")
+        self.view.backgroundColor = UIColor.red
     }
     
     override func viewWillAppear(_ animated: Bool) {
